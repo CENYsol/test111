@@ -3,6 +3,7 @@ const title = document.getElementById("title");
 const desc = document.getElementById("description");
 const btn = document.getElementById("exploreBtn");
 const section2 = document.getElementById("section2");
+const navbar = document.getElementById("navbar");
 
 const translations = {
   en: {
@@ -30,4 +31,13 @@ langBtn.addEventListener("click", (e) => {
 
 btn.addEventListener("click", () => {
   section2.scrollIntoView({ behavior: 'smooth' });
+});
+
+window.addEventListener('scroll', () => {
+  const threshold = window.innerHeight * 0.6;
+  if (window.scrollY > threshold) {
+    navbar.classList.add('hidden');
+  } else {
+    navbar.classList.remove('hidden');
+  }
 });
