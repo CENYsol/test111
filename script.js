@@ -24,8 +24,13 @@ langBtn.addEventListener("click", (e) => {
   e.preventDefault();
   currentLang = currentLang === "en" ? "ru" : "en";
   langBtn.textContent = currentLang.toUpperCase();
-  title.innerHTML = '';
 
+  // сброс содержимого и классов
+  title.innerHTML = '';
+  desc.classList.remove('show-description');
+  btn.classList.remove('show-button');
+
+  // заголовок по буквам
   const letters = currentLang === 'en'
     ? ['P','i','x','e','l','s','.',' ','D','e','s','i','g','n','.',' ','C','r','y','p','t','o','.']
     : ['П','и','к','с','е','л','и','.',' ','Д','и','з','а','й','н','.',' ','К','р','и','п','т','а','.'];
@@ -38,9 +43,11 @@ langBtn.addEventListener("click", (e) => {
     title.appendChild(span);
   });
 
+  // обновим текст
   desc.innerHTML = translations[currentLang].desc;
   btn.textContent = translations[currentLang].button;
 
+  // запустим анимацию
   animateLetters();
 });
 
