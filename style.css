@@ -8,8 +8,8 @@
 body, html {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
-  color: white;
   background-color: #0d1c18;
+  color: #fcffeb;
   scroll-behavior: smooth;
 }
 
@@ -26,12 +26,13 @@ body, html {
   background: transparent;
 }
 
-.logo {
-  font-size: 1.2rem;
-  font-weight: bold;
+.logo img {
+  height: 30px;
+}
+
+.nav-links {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
 }
 
 .nav-links a {
@@ -43,7 +44,44 @@ body, html {
 }
 
 .nav-links a:hover {
-  color: white;
+  color: #fcffeb;
+}
+
+/* Language Switcher */
+.lang-switcher {
+  position: relative;
+  margin-left: 30px;
+}
+
+.lang-switcher button {
+  background: none;
+  color: #b0d9c6;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.lang-switcher ul {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: #0f1d1a;
+  border: 1px solid #b0d9c6;
+  list-style: none;
+  padding: 5px 0;
+  display: none;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.lang-switcher ul li {
+  padding: 5px 15px;
+  cursor: pointer;
+  color: #fcffeb;
+}
+
+.lang-switcher ul li:hover {
+  background: #1a2f28;
 }
 
 /* Hero Section */
@@ -52,35 +90,4 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 20px;
-  background: linear-gradient(135deg, #0b1c17, #1a4235, #00ffbb22);
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  color: #b0d9c6;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-
-.explore-btn {
-  background: white;
-  color: #1c3c33;
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
-  border-radius: 2rem;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.explore-btn:hover {
-  transform: scale(1.05);
-}
+  text-align: cen
