@@ -25,16 +25,22 @@ langBtn.addEventListener("click", (e) => {
   currentLang = currentLang === "en" ? "ru" : "en";
   langBtn.textContent = currentLang.toUpperCase();
   title.innerHTML = '';
-  const letters = translations[currentLang].title.split('');
+
+  const letters = currentLang === 'en'
+    ? ['P','i','x','e','l','s','.',' ','D','e','s','i','g','n','.',' ','C','r','y','p','t','o','.']
+    : ['П','и','к','с','е','л','и','.',' ','Д','и','з','а','й','н','.',' ','К','р','и','п','т','а','.'];
+
   letters.forEach((char, i) => {
     const span = document.createElement('span');
     span.classList.add('letter');
     span.style.setProperty('--i', i);
-    span.textContent = char;
+    span.textContent = char === ' ' ? '\u00A0' : char;
     title.appendChild(span);
   });
+
   desc.innerHTML = translations[currentLang].desc;
   btn.textContent = translations[currentLang].button;
+
   animateLetters();
 });
 
