@@ -27,7 +27,7 @@ body, html {
 }
 
 .logo img {
-  height: 45px; /* увеличено */
+  height: 45px;
 }
 
 .nav-links {
@@ -38,7 +38,7 @@ body, html {
 .nav-links a,
 .lang-switcher button {
   margin-left: 30px;
-  color: #fcffeb; /* обновлено */
+  color: #fcffeb;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
@@ -90,18 +90,28 @@ body, html {
   align-items: center;
   text-align: center;
   padding: 20px;
-  background: linear-gradient(135deg, #0b1c17, #1a4235, #00ffbb22); /* восстановлено */
+  background-color: #050f0c; /* тёмный фон */
+
+  /* Световой градиент справа снизу */
+  background-image: radial-gradient(
+    circle at 80% 90%,
+    rgba(0, 255, 170, 0.15) 0%,
+    rgba(0, 255, 170, 0.05) 30%,
+    rgba(0, 0, 0, 0.0) 60%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hero h1 {
-  font-size: 3.5rem; /* восстановлен размер */
+  font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: #fcffeb;
 }
 
 .hero p {
-  font-size: 1.2rem; /* увеличен */
+  font-size: 1.2rem;
   color: #b0d9c6;
   line-height: 1.6;
   margin-bottom: 2rem;
