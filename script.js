@@ -7,12 +7,12 @@ const navbar = document.getElementById("navbar");
 
 const translations = {
   en: {
-    title: "Captivating Portfolio",
+    title: "Pixels. Design. Crypto.",
     desc: "Discover the Artistry: Immerse Yourself in a Minimalist Dark-Themed Portfolio<br />Site with Vibrant Green Accents",
     button: "Explore More",
   },
   ru: {
-    title: "Захватывающее Портфолио",
+    title: "Пиксели. Дизайн. Крипта.",
     desc: "Откройте искусство: погрузитесь в минималистичное портфолио в тёмной теме<br />с яркими зелёными акцентами",
     button: "Подробнее",
   }
