@@ -85,7 +85,7 @@ html, body {
   overflow: hidden;
 }
 
-/* Псевдоэлемент — вспышка градиента */
+/* Вспышка градиента */
 .hero::before {
   content: '';
   position: absolute;
@@ -155,20 +155,25 @@ html, body {
   transform: translateY(0px) !important;
 }
 
+/* ✅ Explore More — Glassmorphism стиль */
 .explore-btn {
-  background: #f7f0e7;
-  color: #1c3c33;
+  background: rgba(247, 240, 231, 0.08);
+  color: #f7f0e7;
   padding: 0.8rem 2rem;
   font-size: 1rem;
   border-radius: 2rem;
-  border: none;
+  border: 1px solid rgba(247, 240, 231, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
   margin-top: 1rem;
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.2);
 }
 
 .explore-btn:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(0, 255, 170, 0.4);
 }
 
 /* Section 2 */
@@ -218,7 +223,7 @@ html, body {
   }
 }
 
-/* Вспышка — плавная анимация */
+/* Плавная вспышка градиента */
 @keyframes flashGradientSmooth {
   0% {
     opacity: 0;
