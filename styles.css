@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  overflow-x: hidden;
+  font-family: sans-serif;
+  background: #111;
+  color: white;
+}
+
+.stack-container {
+  position: relative;
+  height: 400vh; /* 4 секции */
+}
+
+.panel {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  transform: scale(1);
+  transition: transform 0.3s, opacity 0.3s;
+  z-index: calc(10 - var(--i));
+  background: hsl(calc(var(--i) * 60), 70%, 30%);
+  opacity: 0.8;
+}
