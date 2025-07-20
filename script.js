@@ -18,7 +18,8 @@ const translations = {
 
 let currentLang = "en";
 
-langBtn.addEventListener("click", () => {
+langBtn.addEventListener("click", (e) => {
+  e.preventDefault(); // не даёт перейти по ссылке
   currentLang = currentLang === "en" ? "ru" : "en";
   langBtn.textContent = currentLang.toUpperCase();
   title.innerHTML = translations[currentLang].title;

@@ -35,21 +35,16 @@ body, html {
   align-items: center;
 }
 
-.nav-links a,
-.lang-switcher button {
+.nav-links a {
   margin-left: 30px;
   color: #fcffeb;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
-  background: none;
-  border: none;
   font-size: 1rem;
-  cursor: pointer;
 }
 
-.nav-links a:hover,
-.lang-switcher button:hover {
+.nav-links a:hover {
   color: #b0d9c6;
 }
 
@@ -62,7 +57,7 @@ body, html {
   text-align: center;
   padding: 20px;
 
-  /* Обновлённый мощный луч света */
+  /* Усиленный градиентный луч света справа снизу */
   background-color: #050f0c;
   background-image: radial-gradient(
     circle at 80% 90%,
@@ -84,7 +79,7 @@ body, html {
 
 .hero p {
   font-size: 1.2rem;
-  color: #fcffeb; /* теперь такого же цвета, как и заголовок */
+  color: #fcffeb;
   line-height: 1.6;
   margin-bottom: 2rem;
   max-width: 700px;
