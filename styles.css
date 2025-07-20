@@ -8,8 +8,8 @@
 body, html {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #0b1c17;
   color: white;
+  background-color: #0d1c18;
   scroll-behavior: smooth;
 }
 
@@ -23,6 +23,7 @@ body, html {
   justify-content: space-between;
   align-items: center;
   z-index: 10;
+  background: transparent;
 }
 
 .logo {
@@ -51,26 +52,9 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  background: linear-gradient(135deg, #0b1c17, #122c24);
-  overflow: hidden;
-  padding: 0 20px;
-}
-
-.background-shape {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at center, #1b4b3b 20%, transparent 70%);
-  transform: rotate(-20deg);
-  top: -50%;
-  left: -50%;
-  z-index: 0;
-}
-
-.hero-content {
   text-align: center;
-  z-index: 1;
+  padding: 20px;
+  background: linear-gradient(135deg, #0b1c17, #1a4235, #00ffbb22);
 }
 
 .hero h1 {
