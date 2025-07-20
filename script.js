@@ -1,6 +1,4 @@
 const langBtn = document.getElementById("langBtn");
-const langList = document.getElementById("langList");
-
 const title = document.getElementById("title");
 const desc = document.getElementById("description");
 const btn = document.getElementById("exploreBtn");
@@ -18,17 +16,12 @@ const translations = {
   }
 };
 
-langBtn.addEventListener("click", () => {
-  langList.style.display = langList.style.display === "block" ? "none" : "block";
-});
+let currentLang = "en";
 
-langList.querySelectorAll("li").forEach((li) => {
-  li.addEventListener("click", () => {
-    const lang = li.dataset.lang;
-    langBtn.textContent = lang.toUpperCase() + " ▾";
-    title.innerHTML = translations[lang].title;
-    desc.innerHTML = translations[lang].desc;
-    btn.textContent = translations[lang].button;
-    langList.style.display = "none";
-  });
+langBtn.addEventListener("click", () => {
+  currentLang = currentLang === "en" ? "ru" : "en";
+  langBtn.textContent = currentLang.toUpperCase();
+  title.innerHTML = translations[currentLang].title;
+  desc.innerHTML = translations[currentLang].desc;
+  btn.textContent = translations[currentLang].button;
 });
