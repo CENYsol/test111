@@ -1,3 +1,4 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -7,37 +8,33 @@
 body, html {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
+  background-color: #0b1c17;
   color: white;
   scroll-behavior: smooth;
 }
 
-.hero {
-  height: 100vh;
-  background: radial-gradient(circle at center, #1c3c33, #0f1d1a);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem 4rem;
-  position: relative;
-  overflow: hidden;
-}
-
+/* Navbar */
 .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 10;
 }
 
 .logo {
-  font-weight: bold;
   font-size: 1.2rem;
+  font-weight: bold;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
 .nav-links a {
-  margin-left: 2rem;
+  margin-left: 30px;
   color: #b0d9c6;
   text-decoration: none;
   font-weight: 500;
@@ -48,9 +45,32 @@ body, html {
   color: white;
 }
 
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(135deg, #0b1c17, #122c24);
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.background-shape {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, #1b4b3b 20%, transparent 70%);
+  transform: rotate(-20deg);
+  top: -50%;
+  left: -50%;
+  z-index: 0;
+}
+
 .hero-content {
   text-align: center;
-  margin: auto;
+  z-index: 1;
 }
 
 .hero h1 {
@@ -62,11 +82,11 @@ body, html {
 .hero p {
   font-size: 1.1rem;
   color: #b0d9c6;
-  max-width: 600px;
-  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+  margin-bottom: 2rem;
 }
 
-.hero button {
+.explore-btn {
   background: white;
   color: #1c3c33;
   padding: 0.8rem 2rem;
@@ -77,24 +97,6 @@ body, html {
   transition: transform 0.3s;
 }
 
-.hero button:hover {
+.explore-btn:hover {
   transform: scale(1.05);
-}
-
-.circle {
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  border-radius: 50%;
-  background: radial-gradient(circle at center, rgba(0,255,150,0.05), transparent);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(20deg);
-  z-index: 0;
-}
-
-.hero-content,
-.navbar {
-  position: relative;
-  z-index: 1;
 }
