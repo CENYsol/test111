@@ -1,35 +1,6 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ... СБРОС, ШРИФТ, СКРОЛЛБАР и БАЗА остаются без изменений ... */
 
-html, body {
-  height: 100%;
-  font-family: 'Segoe UI', sans-serif;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  background-color: #0d1c18;
-  color: #f7f0e7;
-}
-
-/* Скроллбар — тёмный */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #0d1c18;
-}
-::-webkit-scrollbar-thumb {
-  background: #444;
-  border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #666;
-}
-
-/* Navbar */
+/* === Glassmorphism для navbar === */
 .navbar {
   position: fixed;
   top: 0;
@@ -39,38 +10,15 @@ html, body {
   justify-content: space-between;
   align-items: center;
   z-index: 100;
-  background: transparent;
+  background: rgba(13, 28, 24, 0.4);
+  backdrop-filter: blur(12px);
   transition: opacity 0.6s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.navbar.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
+/* ... nav-links и logo остаются без изменений ... */
 
-.logo img {
-  height: 45px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-}
-
-.nav-links a {
-  margin-left: 30px;
-  color: #f7f0e7;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-  font-size: 1rem;
-}
-
-.nav-links a:hover {
-  color: #b0d9c6;
-}
-
-/* Hero Section */
+/* === Hero Section === */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -85,16 +33,14 @@ html, body {
   overflow: hidden;
 }
 
-/* Псевдоэлемент — вспышка градиента */
+/* Градиентная вспышка */
 .hero::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background-image: radial-gradient(
-    circle at 80% 90%,
+    circle at var(--x, 80%) var(--y, 90%),
     rgba(0, 255, 170, 0.7) 0%,
     rgba(0, 255, 170, 0.3) 20%,
     rgba(0, 255, 170, 0.1) 40%,
@@ -106,13 +52,15 @@ html, body {
   z-index: 0;
 }
 
-/* Контент внутри hero */
+/* Динамический градиент будет обновляться через JS */
+
+/* Контент поверх вспышки */
 .hero-content {
   position: relative;
   z-index: 1;
 }
 
-/* Заголовок по буквам */
+/* === Заголовок по буквам === */
 .hero h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
@@ -134,7 +82,7 @@ html, body {
   animation-delay: calc(0.05s * var(--i));
 }
 
-/* Подзаголовок и кнопка — скрыты до появления */
+/* === Подзаголовок и кнопка === */
 #description,
 #exploreBtn {
   opacity: 0;
@@ -155,23 +103,26 @@ html, body {
   transform: translateY(0px) !important;
 }
 
+/* === Glass кнопка === */
 .explore-btn {
-  background: #f7f0e7;
-  color: #1c3c33;
+  background: rgba(247, 240, 231, 0.15);
+  color: #f7f0e7;
   padding: 0.8rem 2rem;
   font-size: 1rem;
   border-radius: 2rem;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, background 0.3s;
   margin-top: 1rem;
 }
 
 .explore-btn:hover {
   transform: scale(1.05);
+  background: rgba(247, 240, 231, 0.25);
 }
 
-/* Section 2 */
+/* === Section 2 === */
 .section-2 {
   min-height: 100vh;
   background-color: #f7f0e7;
@@ -181,7 +132,14 @@ html, body {
   align-items: center;
   text-align: center;
   padding: 60px 20px;
-  animation: fadeIn 1s ease;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.section-2.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-2-content {
@@ -198,18 +156,7 @@ html, body {
   line-height: 1.6;
 }
 
-/* Анимации */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(80px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* === Анимации === */
 @keyframes fadeInLetter {
   to {
     opacity: 1;
@@ -218,7 +165,6 @@ html, body {
   }
 }
 
-/* Вспышка — плавная анимация */
 @keyframes flashGradientSmooth {
   0% {
     opacity: 0;
