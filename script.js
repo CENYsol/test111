@@ -8,12 +8,12 @@ const navbar = document.getElementById("navbar");
 const translations = {
   en: {
     title: "Pixels. Design. Crypto.",
-    desc: "Interface design, NFT-ready visuals, crypto concepts, and pixel craftsmanship — all presented in a dark, minimal layout inspired by digital culture.",
+    desc: `<span>Interface design, NFT-ready visuals, crypto concepts,</span><br /><span>and pixel craftsmanship — all presented in a dark, minimal layout inspired by digital culture.</span>`,
     button: "Explore More",
   },
   ru: {
     title: "Пиксели. Дизайн. Крипта.",
-    desc: "Интерфейсный дизайн, визуалы под NFT, крипто-концепции и пиксельное мастерство — всё это в тёмной, минималистичной обёртке, вдохновлённой цифровой культурой.",
+    desc: `<span>Интерфейсный дизайн, визуалы под NFT, крипто-концепции,</span><br /><span>и пиксельное мастерство — всё это в тёмной, минималистичной обёртке, вдохновлённой цифровой культурой.</span>`,
     button: "Подробнее",
   }
 };
@@ -25,12 +25,10 @@ langBtn.addEventListener("click", (e) => {
   currentLang = currentLang === "en" ? "ru" : "en";
   langBtn.textContent = currentLang.toUpperCase();
 
-  // сброс содержимого и классов
   title.innerHTML = '';
   desc.classList.remove('show-description');
   btn.classList.remove('show-button');
 
-  // заголовок по буквам
   const letters = currentLang === 'en'
     ? ['P','i','x','e','l','s','.',' ','D','e','s','i','g','n','.',' ','C','r','y','p','t','o','.']
     : ['П','и','к','с','е','л','и','.',' ','Д','и','з','а','й','н','.',' ','К','р','и','п','т','а','.'];
@@ -43,11 +41,9 @@ langBtn.addEventListener("click", (e) => {
     title.appendChild(span);
   });
 
-  // обновим описание и кнопку
   desc.innerHTML = translations[currentLang].desc;
   btn.textContent = translations[currentLang].button;
 
-  // анимация
   animateLetters();
 });
 
