@@ -1,28 +1,40 @@
-/* ========== Base ========== */
+/* Reset & Base */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #0c0c0c;
+  background-color: #0f0f0f;
   color: #f7f0e7;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-/* ========== Navbar ========== */
+/* Scrollbar */
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+body::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 1.2rem 3rem;
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10;
-  background: transparent;
+  z-index: 100;
   transition: opacity 0.5s ease;
 }
 
@@ -31,131 +43,139 @@ body {
   pointer-events: none;
 }
 
+.nav-links a {
+  margin-left: 30px;
+  color: #f7f0e7;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #90ffb5;
+}
+
 .logo img {
   height: 42px;
 }
 
-.nav-links a {
-  margin-left: 2rem;
-  text-decoration: none;
-  color: #f7f0e7;
-  font-weight: 500;
-  transition: opacity 0.3s ease;
-}
-
-/* ========== Hero Section ========== */
+/* Hero Section */
 .hero {
   height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  background: radial-gradient(ellipse at 70% 90%, rgba(0,255,130,0.25), transparent 60%), #0c0c0c;
-  background-attachment: fixed;
+  justify-content: center;
   position: relative;
+  text-align: center;
+  background: radial-gradient(ellipse at 70% 80%, rgba(0, 255, 150, 0.3), transparent 60%), #0f0f0f;
   overflow: hidden;
-  animation: flashFadeIn 1.5s ease;
 }
 
-@keyframes flashFadeIn {
-  0% {
-    background: radial-gradient(ellipse at 70% 90%, rgba(0,255,130,0.9), transparent 60%), #0c0c0c;
-  }
-  100% {
-    background: radial-gradient(ellipse at 70% 90%, rgba(0,255,130,0.25), transparent 60%), #0c0c0c;
-  }
+/* Gradient Flash Animation */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 70%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 1200px;
+  background: radial-gradient(circle, rgba(0,255,150,0.4), transparent 60%);
+  opacity: 0;
+  animation: flash 2s ease-in-out forwards;
+  pointer-events: none;
 }
 
-.hero-content {
-  max-width: 800px;
-  padding: 0 1rem;
-  z-index: 2;
+@keyframes flash {
+  0% { opacity: 0; transform: scale(0.6) translate(-50%, -50%); }
+  50% { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+  100% { opacity: 0; transform: scale(1.5) translate(-50%, -50%); }
 }
 
-/* ========== Title Letters ========== */
-h1 {
-  font-size: 3rem;
-  margin: 0;
-  line-height: 1.3;
-  letter-spacing: 1px;
+/* Hero Content */
+.hero-content h1 {
+  font-size: 52px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  display: inline-block;
+  color: #f7f0e7;
 }
 
 .letter {
   display: inline-block;
   opacity: 0;
-  transform: translateY(30px) blur(5px);
+  filter: blur(4px);
+  transform: translateY(10px);
   animation: letterIn 0.5s forwards;
-  animation-delay: calc(var(--i) * 0.05s);
+  animation-delay: calc(0.05s * var(--i));
 }
 
 @keyframes letterIn {
   to {
     opacity: 1;
-    transform: translateY(0) blur(0);
+    filter: blur(0);
+    transform: translateY(0);
   }
 }
 
-/* ========== Description ========== */
 #description {
+  font-size: 18px;
+  max-width: 720px;
+  margin: 0 auto;
   opacity: 0;
-  transform: translateY(20px) blur(5px);
-  transition: all 0.6s ease;
-  margin-top: 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.5;
+  filter: blur(4px);
+  transform: translateY(10px);
+  transition: all 0.8s ease;
+  line-height: 1.6;
 }
 
 .show-description {
   opacity: 1;
-  transform: translateY(0) blur(0);
+  filter: blur(0);
+  transform: translateY(0);
 }
 
-/* ========== Explore Button ========== */
+#description span {
+  display: inline-block;
+}
+
+/* Button */
 .explore-btn {
-  margin-top: 3rem;
-  padding: 0.75rem 1.8rem;
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  color: #f7f0e7;
+  margin-top: 30px;
+  padding: 12px 28px;
+  font-size: 16px;
+  border: none;
   border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  color: #f7f0e7;
   cursor: pointer;
   opacity: 0;
+  transition: all 0.8s ease;
   transform: translateY(20px);
-  filter: blur(5px);
-  transition: all 0.6s ease;
 }
 
 .show-button {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
 }
 
-/* ========== Section 2 ========== */
+.explore-btn:hover {
+  background: rgba(0, 255, 150, 0.2);
+}
+
+/* Section 2 */
 .section-2 {
+  height: 100vh;
   background-color: #f7f0e7;
-  color: #0c0c0c;
-  min-height: 100vh;
-  padding: 5rem 2rem;
+  color: #0f0f0f;
+  padding: 100px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 1s ease;
 }
 
 .section-2-content {
   max-width: 800px;
   text-align: center;
-}
-
-.section-2 h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.section-2 p {
-  font-size: 1.1rem;
-  line-height: 1.6;
 }
