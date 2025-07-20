@@ -24,9 +24,18 @@ langBtn.addEventListener("click", (e) => {
   e.preventDefault();
   currentLang = currentLang === "en" ? "ru" : "en";
   langBtn.textContent = currentLang.toUpperCase();
-  title.innerHTML = translations[currentLang].title;
+  title.innerHTML = '';
+  const letters = translations[currentLang].title.split('');
+  letters.forEach((char, i) => {
+    const span = document.createElement('span');
+    span.classList.add('letter');
+    span.style.setProperty('--i', i);
+    span.textContent = char;
+    title.appendChild(span);
+  });
   desc.innerHTML = translations[currentLang].desc;
   btn.textContent = translations[currentLang].button;
+  animateLetters();
 });
 
 btn.addEventListener("click", () => {
@@ -40,4 +49,25 @@ window.addEventListener('scroll', () => {
   } else {
     navbar.classList.remove('hidden');
   }
+});
+
+function animateLetters() {
+  const letters = document.querySelectorAll('.hero h1 .letter');
+  letters.forEach((el, i) => {
+    el.style.setProperty('--i', i);
+  });
+
+  const totalDelay = letters.length * 50 + 400;
+
+  setTimeout(() => {
+    desc.classList.add('show-description');
+  }, totalDelay);
+
+  setTimeout(() => {
+    btn.classList.add('show-button');
+  }, totalDelay + 600);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  animateLetters();
 });
