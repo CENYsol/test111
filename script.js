@@ -8,12 +8,12 @@ const navbar = document.getElementById("navbar");
 const translations = {
   en: {
     title: "Pixels. Design. Crypto.",
-    desc: "Discover the Artistry: Immerse Yourself in a Minimalist Dark-Themed Portfolio<br />Site with Vibrant Green Accents",
+    desc: "Interface design, NFT-ready visuals, crypto concepts, and pixel craftsmanship — all presented in a dark, minimal layout inspired by digital culture.",
     button: "Explore More",
   },
   ru: {
     title: "Пиксели. Дизайн. Крипта.",
-    desc: "Откройте искусство: погрузитесь в минималистичное портфолио в тёмной теме<br />с яркими зелёными акцентами",
+    desc: "Интерфейсный дизайн, визуалы под NFT, крипто-концепции и пиксельное мастерство — всё это в тёмной, минималистичной обёртке, вдохновлённой цифровой культурой.",
     button: "Подробнее",
   }
 };
@@ -43,11 +43,11 @@ langBtn.addEventListener("click", (e) => {
     title.appendChild(span);
   });
 
-  // обновим текст
+  // обновим описание и кнопку
   desc.innerHTML = translations[currentLang].desc;
   btn.textContent = translations[currentLang].button;
 
-  // запустим анимацию
+  // анимация
   animateLetters();
 });
 
