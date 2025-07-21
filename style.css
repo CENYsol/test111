@@ -1,4 +1,4 @@
-/* Обнуление и базовая стилизация */
+/* Общие стили */
 * {
   margin: 0;
   padding: 0;
@@ -141,7 +141,7 @@ body {
   text-align: center;
 }
 
-/* Капли — lava lamp style */
+/* Блоб-контейнер */
 .blobs {
   position: absolute;
   inset: 0;
@@ -150,14 +150,15 @@ body {
   pointer-events: none;
 }
 
+/* Пузырьки */
 .blob {
   position: absolute;
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  background: radial-gradient(circle at center, #0a3e29 0%, transparent 70%);
-  opacity: 0.2;
-  filter: blur(45px);
+  background: radial-gradient(circle at center, #019348 0%, transparent 70%);
+  opacity: 0.45;
+  filter: blur(30px);
   animation:
     float var(--float-duration, 9s) ease-in-out infinite alternate,
     pulse var(--pulse-delay, 6s) ease-in-out infinite;
@@ -167,12 +168,13 @@ body {
 
 .blob:hover {
   transform: scale(1.6);
-  filter: blur(100px);
+  filter: blur(80px);
 }
 
+/* Позиции пузырей */
 .blob:nth-child(1) {
   top: 10%;
-  left: 15%;
+  left: 10%;
   --float-duration: 9s;
   --pulse-delay: 3s;
 }
@@ -207,12 +209,13 @@ body {
   --pulse-delay: 8s;
 }
 .blob:nth-child(7) {
-  top: 20%;
-  right: 35%;
-  --float-duration: 9s;
+  top: 25%;
+  left: 5%;
+  --float-duration: 10s;
   --pulse-delay: 9s;
 }
 
+/* Анимации движения и пульсации */
 @keyframes float {
   0%   { transform: translate(0, 0) scale(1); }
   20%  { transform: translate(30px, -25px) scale(1.05); }
@@ -222,7 +225,7 @@ body {
 }
 
 @keyframes pulse {
-  0%, 95%   { filter: brightness(1) blur(45px); }
-  97%       { filter: brightness(2) blur(30px); }
-  100%      { filter: brightness(1) blur(45px); }
+  0%, 95%   { filter: brightness(1) blur(30px); }
+  97%       { filter: brightness(2.2) blur(20px); }
+  100%      { filter: brightness(1) blur(30px); }
 }

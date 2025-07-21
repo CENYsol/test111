@@ -6,36 +6,27 @@ const navbar = document.getElementById('navbar');
 const langBtn = document.getElementById('langBtn');
 
 let currentLang = 'en';
-let isSection2Visible = false;
 
-// Появление текста по буквам
+// Анимация при загрузке
 window.addEventListener('DOMContentLoaded', () => {
-  const letters = document.querySelectorAll('.letter');
-  letters.forEach((letter, index) => {
-    letter.style.setProperty('--i', index);
-  });
-
-  // Показ описания после заголовка
+  animateTitle();
   setTimeout(() => {
     description.classList.add('show-description');
   }, 1200);
-
-  // Показ кнопки после текста
   setTimeout(() => {
     exploreBtn.classList.add('show-button');
   }, 1800);
 });
 
-// Кнопка Explore More
+// Плавная прокрутка по кнопке
 exploreBtn.addEventListener('click', () => {
   section2.scrollIntoView({ behavior: 'smooth' });
 });
 
-// Появление и исчезновение кнопки/навигации при прокрутке
+// Скрытие навигации при скролле
 window.addEventListener('scroll', () => {
   const hero = document.getElementById('hero');
-  const heroRect = hero.getBoundingClientRect();
-  const isOutOfView = heroRect.bottom <= 100;
+  const isOutOfView = hero.getBoundingClientRect().bottom <= 100;
 
   navbar.classList.toggle('hidden', isOutOfView);
   exploreBtn.classList.toggle('show-button', !isOutOfView);
@@ -50,7 +41,7 @@ langBtn.addEventListener('click', (e) => {
 
   const isRu = currentLang === 'ru';
 
-  // Текст заголовка (ничего не меняется — визуально буквы)
+  // Перевод заголовка
   title.innerHTML = isRu
     ? `
       <span class="letter">П</span><span class="letter">и</span><span class="letter">к</span><span class="letter">с</span><span class="letter">е</span><span class="letter">л</span><span class="letter">и</span>
@@ -73,15 +64,8 @@ langBtn.addEventListener('click', (e) => {
       <span class="letter">.</span>
     `;
 
-  // Повторная анимация букв
-  const letters = document.querySelectorAll('.letter');
-  letters.forEach((letter, index) => {
-    letter.style.opacity = 0;
-    letter.style.filter = 'blur(6px)';
-    letter.style.setProperty('--i', index);
-    letter.style.animation = 'fadeInLetter 0.6s forwards';
-    letter.style.animationDelay = `${index * 0.05}s`;
-  });
+  // Перезапуск анимации заголовка
+  animateTitle();
 
   // Перевод описания
   description.innerHTML = isRu
@@ -94,13 +78,15 @@ langBtn.addEventListener('click', (e) => {
       <span>crypto concepts in a dark, minimal layout inspired by digital culture.</span>
     `;
 
-  // Перезапуск анимации описания
+  // Перезапуск описания и кнопки
   description.classList.remove('show-description');
   exploreBtn.classList.remove('show-button');
   setTimeout(() => {
     description.classList.add('show-description');
+  }, 1200);
+  setTimeout(() => {
     exploreBtn.classList.add('show-button');
-  }, 50);
+  }, 1800);
 
   // Перевод навигации
   const navLinks = document.querySelectorAll('.nav-links a');
@@ -111,3 +97,15 @@ langBtn.addEventListener('click', (e) => {
     navLinks[3].textContent = isRu ? 'Контакты' : 'Contact';
   }
 });
+
+// Функция для анимации заголовка по буквам
+function animateTitle() {
+  const letters = document.querySelectorAll('.letter');
+  letters.forEach((letter, index) => {
+    letter.style.opacity = 0;
+    letter.style.filter = 'blur(6px)';
+    letter.style.setProperty('--i', index);
+    letter.style.animation = 'fadeInLetter 0.6s forwards';
+    letter.style.animationDelay = `${index * 0.05}s`;
+  });
+}
