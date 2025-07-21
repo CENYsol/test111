@@ -5,16 +5,20 @@ const btn = document.getElementById("exploreBtn");
 const section2 = document.getElementById("section2");
 const navbar = document.getElementById("navbar");
 
+const navLinks = document.querySelectorAll(".nav-links a"); // пункты меню
+
 const translations = {
   en: {
     title: "Pixels. Design. Crypto.",
     desc: `<span>Interface design, NFT-ready visuals, and pixel craftsmanship —</span><br /><span>crypto concepts in a dark, minimal layout inspired by digital culture.</span>`,
     button: "Explore More",
+    nav: ["Home", "About", "Work", "Contact"]
   },
   ru: {
     title: "Пиксели. Дизайн. Крипта.",
     desc: `<span>Интерфейсный дизайн, визуалы под NFT и пиксельное мастерство —</span><br /><span>крипто-концепции в тёмной, минималистичной цифровой среде.</span>`,
     button: "Подробнее",
+    nav: ["Главная", "Обо мне", "Работы", "Контакты"]
   }
 };
 
@@ -43,6 +47,11 @@ langBtn.addEventListener("click", (e) => {
 
   desc.innerHTML = translations[currentLang].desc;
   btn.textContent = translations[currentLang].button;
+
+  // Обновляем текст меню (кроме последней кнопки — языка)
+  navLinks.forEach((link, i) => {
+    if (i < 4) link.textContent = translations[currentLang].nav[i];
+  });
 
   animateLetters();
 });
