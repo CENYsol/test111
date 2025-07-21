@@ -109,20 +109,20 @@ body {
   margin-top: 30px;
   padding: 12px 28px;
   font-size: 14px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #f7f0e7;
-  backdrop-filter: blur(10px);
+  background: #f7f0e7;
+  color: #0e0e0e;
+  border: none;
   border-radius: 12px;
+  backdrop-filter: blur(12px);
   cursor: pointer;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  filter: blur(6px);
+  transition: opacity 0.6s ease, filter 0.6s ease;
 }
 
 .show-button {
   opacity: 1;
-  transform: translateY(0);
+  filter: blur(0);
 }
 
 /* Вторая секция */
@@ -155,12 +155,12 @@ body {
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  background: radial-gradient(circle at center, #76ffe0 0%, transparent 70%);
+  background: radial-gradient(circle at center, #0a3e29 0%, transparent 70%);
   opacity: 0.2;
-  filter: blur(50px);
+  filter: blur(45px);
   animation:
-    float var(--float-duration, 14s) ease-in-out infinite alternate,
-    pulse var(--pulse-delay, 10s) ease-in-out infinite;
+    float var(--float-duration, 9s) ease-in-out infinite alternate,
+    pulse var(--pulse-delay, 6s) ease-in-out infinite;
   transition: transform 0.3s ease, filter 0.3s ease;
   mix-blend-mode: screen;
 }
@@ -173,44 +173,56 @@ body {
 .blob:nth-child(1) {
   top: 10%;
   left: 15%;
-  --float-duration: 12s;
+  --float-duration: 9s;
   --pulse-delay: 3s;
 }
 .blob:nth-child(2) {
   top: 60%;
   left: 20%;
-  --float-duration: 15s;
-  --pulse-delay: 9s;
+  --float-duration: 11s;
+  --pulse-delay: 7s;
 }
 .blob:nth-child(3) {
   top: 30%;
   right: 20%;
-  --float-duration: 11s;
-  --pulse-delay: 5s;
+  --float-duration: 8s;
+  --pulse-delay: 4s;
 }
 .blob:nth-child(4) {
   bottom: 10%;
   right: 10%;
-  --float-duration: 13s;
-  --pulse-delay: 7s;
+  --float-duration: 10s;
+  --pulse-delay: 5s;
 }
 .blob:nth-child(5) {
   bottom: 40%;
   left: 50%;
-  --float-duration: 10s;
-  --pulse-delay: 11s;
+  --float-duration: 7s;
+  --pulse-delay: 6s;
+}
+.blob:nth-child(6) {
+  top: 50%;
+  left: 70%;
+  --float-duration: 6s;
+  --pulse-delay: 8s;
+}
+.blob:nth-child(7) {
+  top: 20%;
+  right: 35%;
+  --float-duration: 9s;
+  --pulse-delay: 9s;
 }
 
 @keyframes float {
   0%   { transform: translate(0, 0) scale(1); }
-  25%  { transform: translate(20px, -30px) scale(1.1); }
-  50%  { transform: translate(-15px, 10px) scale(0.95); }
-  75%  { transform: translate(25px, 25px) scale(1.05); }
+  20%  { transform: translate(30px, -25px) scale(1.05); }
+  50%  { transform: translate(-20px, 30px) scale(1.1); }
+  70%  { transform: translate(25px, 10px) scale(0.95); }
   100% { transform: translate(0, 0) scale(1); }
 }
 
 @keyframes pulse {
-  0%, 95%   { filter: brightness(1) blur(50px); }
-  97%       { filter: brightness(2) blur(40px); }
-  100%      { filter: brightness(1) blur(50px); }
+  0%, 95%   { filter: brightness(1) blur(45px); }
+  97%       { filter: brightness(2) blur(30px); }
+  100%      { filter: brightness(1) blur(45px); }
 }
