@@ -112,7 +112,7 @@ body {
   background: #f7f0e7;
   color: #0e0e0e;
   border: none;
-  border-radius: 12px;
+  border-radius: 30px;
   backdrop-filter: blur(12px);
   cursor: pointer;
   opacity: 0;
@@ -148,6 +148,12 @@ body {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 2.2s ease;
+}
+
+.blobs.blobs-loaded {
+  opacity: 1;
 }
 
 /* Пузырьки */
@@ -172,60 +178,30 @@ body {
 }
 
 /* Позиции пузырей */
-.blob:nth-child(1) {
-  top: 8%;
-  left: 5%;
-  --float-duration: 10s;
-  --pulse-delay: 3s;
-}
-.blob:nth-child(2) {
-  top: 55%;
-  left: 15%;
-  --float-duration: 11s;
-  --pulse-delay: 7s;
-}
-.blob:nth-child(3) {
-  top: 20%;
-  left: 40%;
-  --float-duration: 8s;
-  --pulse-delay: 4s;
-}
-.blob:nth-child(4) {
-  bottom: 10%;
-  right: 10%;
-  --float-duration: 10s;
-  --pulse-delay: 5s;
-}
-.blob:nth-child(5) {
-  bottom: 40%;
-  left: 60%;
-  --float-duration: 7s;
-  --pulse-delay: 6s;
-}
-.blob:nth-child(6) {
-  top: 50%;
-  left: 80%;
-  --float-duration: 6s;
-  --pulse-delay: 8s;
-}
-.blob:nth-child(7) {
-  top: 25%;
-  right: 5%;
-  --float-duration: 10s;
-  --pulse-delay: 9s;
-}
+.blob:nth-child(1) { top: 8%; left: 5%; --float-duration: 10s; --pulse-delay: 3s; }
+.blob:nth-child(2) { top: 55%; left: 15%; --float-duration: 11s; --pulse-delay: 7s; }
+.blob:nth-child(3) { top: 20%; left: 40%; --float-duration: 8s; --pulse-delay: 4s; }
+.blob:nth-child(4) { bottom: 10%; right: 10%; --float-duration: 10s; --pulse-delay: 5s; }
+.blob:nth-child(5) { bottom: 40%; left: 60%; --float-duration: 7s; --pulse-delay: 6s; }
+.blob:nth-child(6) { top: 50%; left: 80%; --float-duration: 6s; --pulse-delay: 8s; }
+.blob:nth-child(7) { top: 25%; right: 5%; --float-duration: 10s; --pulse-delay: 9s; }
+.blob:nth-child(8) { top: 15%; left: 10%; --float-duration: 9s; --pulse-delay: 3.3s; }
+.blob:nth-child(9) { bottom: 5%; left: 45%; --float-duration: 12s; --pulse-delay: 4.4s; }
+.blob:nth-child(10) { bottom: 8%; left: 30%; --float-duration: 11s; --pulse-delay: 5.5s; }
+.blob:nth-child(11) { top: 5%; left: 25%; --float-duration: 9s; --pulse-delay: 6.6s; }
+.blob:nth-child(12) { top: 12%; left: 70%; --float-duration: 10s; --pulse-delay: 7.7s; }
 
 /* Анимации движения и пульсации */
 @keyframes float {
   0%   { transform: translate(0, 0) scale(1); }
-  20%  { transform: translate(40px, -25px) scale(1.05); }
-  50%  { transform: translate(-30px, 30px) scale(1.1); }
-  70%  { transform: translate(25px, 10px) scale(0.95); }
+  25%  { transform: translate(35px, -20px) scale(1.05); }
+  50%  { transform: translate(-25px, 30px) scale(1.1); }
+  75%  { transform: translate(20px, 15px) scale(0.95); }
   100% { transform: translate(0, 0) scale(1); }
 }
 
 @keyframes pulse {
   0%, 95%   { filter: brightness(1) blur(30px); }
-  97%       { filter: brightness(2.4) blur(20px); }
+  97%       { filter: brightness(1.8) blur(20px); }
   100%      { filter: brightness(1) blur(30px); }
 }

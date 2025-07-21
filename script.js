@@ -1,111 +1,91 @@
-const exploreBtn = document.getElementById('exploreBtn');
-const section2 = document.getElementById('section2');
-const description = document.getElementById('description');
-const title = document.getElementById('title');
-const navbar = document.getElementById('navbar');
-const langBtn = document.getElementById('langBtn');
+document.addEventListener("DOMContentLoaded", () => {
+  // Добавляем класс для появления пузырей
+  document.getElementById("blobs").classList.add("blobs-loaded");
 
-let currentLang = 'en';
-
-// Анимация при загрузке
-window.addEventListener('DOMContentLoaded', () => {
   animateTitle();
+});
+
+function animateTitle() {
+  const title = document.getElementById("title");
+  const letters = title.querySelectorAll(".letter");
+  const description = document.getElementById("description");
+  const button = document.getElementById("exploreBtn");
+
+  letters.forEach((letter, i) => {
+    letter.style.setProperty("--i", i);
+    letter.classList.remove("fade");
+    letter.classList.add("letter");
+  });
+
+  // Удаляем эффекты перед повторной анимацией
+  description.classList.remove("show-description");
+  button.classList.remove("show-button");
+
+  // Показываем описание и кнопку после титульника
   setTimeout(() => {
-    description.classList.add('show-description');
-  }, 1200);
+    description.classList.add("show-description");
+  }, letters.length * 50 + 300);
+
   setTimeout(() => {
-    exploreBtn.classList.add('show-button');
-  }, 1800);
-});
-
-// Плавная прокрутка по кнопке
-exploreBtn.addEventListener('click', () => {
-  section2.scrollIntoView({ behavior: 'smooth' });
-});
-
-// Скрытие навигации при скролле
-window.addEventListener('scroll', () => {
-  const hero = document.getElementById('hero');
-  const isOutOfView = hero.getBoundingClientRect().bottom <= 100;
-
-  navbar.classList.toggle('hidden', isOutOfView);
-  exploreBtn.classList.toggle('show-button', !isOutOfView);
-  description.classList.toggle('show-description', !isOutOfView);
-});
+    button.classList.add("show-button");
+  }, letters.length * 50 + 800);
+}
 
 // Переключение языка
-langBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  currentLang = currentLang === 'en' ? 'ru' : 'en';
-  langBtn.textContent = currentLang.toUpperCase();
+let currentLang = "en";
 
-  const isRu = currentLang === 'ru';
-
-  // Перевод заголовка
-  title.innerHTML = isRu
-    ? `
-      <span class="letter">П</span><span class="letter">и</span><span class="letter">к</span><span class="letter">с</span><span class="letter">е</span><span class="letter">л</span><span class="letter">и</span>
-      <span class="letter">.</span>
-      <span class="letter">&nbsp;</span>
-      <span class="letter">Д</span><span class="letter">и</span><span class="letter">з</span><span class="letter">а</span><span class="letter">й</span><span class="letter">н</span>
-      <span class="letter">.</span>
-      <span class="letter">&nbsp;</span>
-      <span class="letter">К</span><span class="letter">р</span><span class="letter">и</span><span class="letter">п</span><span class="letter">т</span><span class="letter">а</span>
-      <span class="letter">.</span>
-    `
-    : `
-      <span class="letter">P</span><span class="letter">i</span><span class="letter">x</span><span class="letter">e</span><span class="letter">l</span><span class="letter">s</span>
-      <span class="letter">.</span>
-      <span class="letter">&nbsp;</span>
-      <span class="letter">D</span><span class="letter">e</span><span class="letter">s</span><span class="letter">i</span><span class="letter">g</span><span class="letter">n</span>
-      <span class="letter">.</span>
-      <span class="letter">&nbsp;</span>
-      <span class="letter">C</span><span class="letter">r</span><span class="letter">y</span><span class="letter">p</span><span class="letter">t</span><span class="letter">o</span>
-      <span class="letter">.</span>
-    `;
-
-  // Перезапуск анимации заголовка
-  animateTitle();
-
-  // Перевод описания
-  description.innerHTML = isRu
-    ? `
-      <span>Интерфейсный дизайн, визуалы для NFT и пиксельная графика —</span><br />
-      <span>крипто-концепты в тёмном, минималистичном оформлении.</span>
-    `
-    : `
-      <span>Interface design, NFT-ready visuals, and pixel craftsmanship —</span><br />
-      <span>crypto concepts in a dark, minimal layout inspired by digital culture.</span>
-    `;
-
-  // Перезапуск описания и кнопки
-  description.classList.remove('show-description');
-  exploreBtn.classList.remove('show-button');
-  setTimeout(() => {
-    description.classList.add('show-description');
-  }, 1200);
-  setTimeout(() => {
-    exploreBtn.classList.add('show-button');
-  }, 1800);
-
-  // Перевод навигации
-  const navLinks = document.querySelectorAll('.nav-links a');
-  if (navLinks.length >= 5) {
-    navLinks[0].textContent = isRu ? 'Главная' : 'Home';
-    navLinks[1].textContent = isRu ? 'Обо мне' : 'About';
-    navLinks[2].textContent = isRu ? 'Работы' : 'Work';
-    navLinks[3].textContent = isRu ? 'Контакты' : 'Contact';
+const translations = {
+  en: {
+    title: "Pixels. Design. Crypto.",
+    description: [
+      "Interface design, NFT-ready visuals, and pixel craftsmanship —",
+      "crypto concepts in a dark, minimal layout inspired by digital culture."
+    ],
+    nav: ["Home", "About", "Work", "Contact", "EN"],
+    button: "Explore More"
+  },
+  ru: {
+    title: "Пиксели. Дизайн. Крипта.",
+    description: [
+      "Интерфейсы, пиксель-арт и NFT-графика —",
+      "крипто-идеи в тёмном минималистичном оформлении, вдохновлённом цифровой культурой."
+    ],
+    nav: ["Главная", "Обо мне", "Работы", "Контакты", "RU"],
+    button: "Смотреть больше"
   }
-});
+};
 
-// Функция для анимации заголовка по буквам
-function animateTitle() {
-  const letters = document.querySelectorAll('.letter');
-  letters.forEach((letter, index) => {
-    letter.style.opacity = 0;
-    letter.style.filter = 'blur(6px)';
-    letter.style.setProperty('--i', index);
-    letter.style.animation = 'fadeInLetter 0.6s forwards';
-    letter.style.animationDelay = `${index * 0.05}s`;
+document.getElementById("langBtn").addEventListener("click", () => {
+  currentLang = currentLang === "en" ? "ru" : "en";
+
+  const { title, description, nav, button } = translations[currentLang];
+
+  // Обновляем заголовок
+  const titleContainer = document.getElementById("title");
+  titleContainer.innerHTML = "";
+
+  [...title].forEach((char, i) => {
+    const span = document.createElement("span");
+    span.className = "letter";
+    span.style.setProperty("--i", i);
+    span.textContent = char;
+    titleContainer.appendChild(span);
   });
-}
+
+  // Обновляем описание
+  const descriptionElement = document.getElementById("description");
+  descriptionElement.innerHTML = description.join("<br>");
+
+  // Обновляем кнопку
+  const exploreBtn = document.getElementById("exploreBtn");
+  exploreBtn.textContent = button;
+
+  // Обновляем навигацию
+  const navLinks = document.querySelectorAll(".nav-links a");
+  navLinks.forEach((link, index) => {
+    if (index < nav.length) link.textContent = nav[index];
+  });
+
+  // Повторяем анимации
+  animateTitle();
+});
