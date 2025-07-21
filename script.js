@@ -8,12 +8,12 @@ const navbar = document.getElementById("navbar");
 const translations = {
   en: {
     title: "Pixels. Design. Crypto.",
-    desc: `<span>Interface design, NFT-ready visuals, crypto concepts,</span><br /><span>and pixel craftsmanship — all presented in a dark, minimal layout inspired by digital culture.</span>`,
+    desc: `<span>Interface design, NFT-ready visuals, and pixel craftsmanship —</span><br /><span>crypto concepts in a dark, minimal layout inspired by digital culture.</span>`,
     button: "Explore More",
   },
   ru: {
     title: "Пиксели. Дизайн. Крипта.",
-    desc: `<span>Интерфейсный дизайн, визуалы под NFT, крипто-концепции,</span><br /><span>и пиксельное мастерство — всё это в тёмной, минималистичной обёртке, вдохновлённой цифровой культурой.</span>`,
+    desc: `<span>Интерфейсный дизайн, визуалы под NFT и пиксельное мастерство —</span><br /><span>крипто-концепции в тёмной, минималистичной цифровой среде.</span>`,
     button: "Подробнее",
   }
 };
