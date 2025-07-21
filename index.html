@@ -3,49 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
+  <title>Pixels. Design. Crypto.</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
+
+  <!-- Навигация -->
+  <header class="navbar" id="navbar">
     <div class="logo">
       <img src="https://i.postimg.cc/XqNd9BRb/Logo.png" alt="Logo" />
     </div>
-    <nav class="nav">
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Work</li>
-        <li>Contact</li>
-        <li id="lang-toggle" class="language-toggle">EN</li>
-      </ul>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Work</a>
+      <a href="#">Contact</a>
+      <a href="#" id="langBtn">EN</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="blob blob-4"></div>
-    <div class="blob blob-5"></div>
-    <div class="blob blob-6"></div>
-    <div class="blob blob-7"></div>
-    <div class="blob blob-8"></div>
-    <div class="blob blob-9"></div>
-    <div class="blob blob-10"></div>
-    <div class="blob blob-11"></div>
-    <div class="blob blob-12"></div>
+  <!-- Первая секция -->
+  <section class="hero" id="hero">
+    <!-- Пузыри -->
+    <div class="blobs">
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+    </div>
 
-    <h1 id="title"></h1>
-    <p id="description"></p>
-    <button id="explore-button" class="explore-btn"></button>
+    <!-- Контент -->
+    <div class="hero-content">
+      <h1 id="title">
+        <span class="letter">P</span><span class="letter">i</span><span class="letter">x</span><span class="letter">e</span><span class="letter">l</span><span class="letter">s</span>
+        <span class="letter">.</span><span class="letter">&nbsp;</span>
+        <span class="letter">D</span><span class="letter">e</span><span class="letter">s</span><span class="letter">i</span><span class="letter">g</span><span class="letter">n</span>
+        <span class="letter">.</span><span class="letter">&nbsp;</span>
+        <span class="letter">C</span><span class="letter">r</span><span class="letter">y</span><span class="letter">p</span><span class="letter">t</span><span class="letter">o</span>
+        <span class="letter">.</span>
+      </h1>
+
+      <p id="description">
+        <span>Interface design, NFT-ready visuals, and pixel craftsmanship —</span><br />
+        <span>crypto concepts in a dark, minimal layout inspired by digital culture.</span>
+      </p>
+
+      <button class="explore-btn" id="exploreBtn">Explore More</button>
+    </div>
   </section>
 
-  <section id="about" class="section">
-    <h2>Обо мне</h2>
-    <p>
-      Здесь будет описание второй секции. Например: краткая биография, навыки, опыт, ссылки и т.д.
-    </p>
+  <!-- Вторая секция -->
+  <section class="section-2" id="section2">
+    <div class="section-2-content">
+      <h2>Обо мне</h2>
+      <p>Здесь будет описание второй секции. Например: краткая биография, навыки, опыт, ссылки и т.д.</p>
+    </div>
   </section>
 
   <script src="script.js"></script>

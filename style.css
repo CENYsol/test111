@@ -1,4 +1,4 @@
-/* Обнуление и базовые стили */
+/* Общие стили */
 * {
   margin: 0;
   padding: 0;
@@ -6,191 +6,227 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
   background-color: #07100e;
-  color: #fcffeb;
+  color: #f7f0e7;
+  font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-header {
+/* Навигация */
+.navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10;
+  padding: 20px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
   background: transparent;
-  transition: opacity 0.5s ease;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.navbar.hidden {
+  opacity: 0;
+}
+
+.nav-links a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #f7f0e7;
+  font-size: 16px;
+  transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
 }
 
 .logo img {
-  height: 42px;
-  transition: transform 0.3s ease;
-}
-
-.nav ul {
-  list-style: none;
-  display: flex;
-  gap: 24px;
-}
-
-.nav li {
-  font-size: 16px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.nav li:hover {
-  color: #a6ffb1;
-}
-
-.language-toggle {
-  cursor: pointer;
-  font-weight: bold;
+  height: 48px;
 }
 
 /* Hero секция */
 .hero {
   height: 100vh;
+  width: 100%;
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  padding: 100px 40px 40px;
   text-align: center;
   overflow: hidden;
+  background-color: #07100e;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
 }
 
 .hero h1 {
-  font-size: 38px;
-  font-weight: 800;
+  font-size: 36px;
+  font-weight: 800; /* стало жирнее */
+  color: #f7f0e7;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.letter {
+  display: inline-block;
   opacity: 0;
-  filter: blur(8px);
-  animation: fadeInText 1s forwards;
-  animation-delay: 0.2s;
+  filter: blur(6px);
+  animation: fadeInLetter 0.6s forwards;
+  animation-delay: calc(var(--i) * 0.05s);
 }
 
-.hero p {
-  font-size: 20px;
-  max-width: 720px;
-  opacity: 0;
-  filter: blur(10px);
-  animation: fadeInText 1s forwards;
-  animation-delay: 1.4s;
-  margin-top: 16px;
-  line-height: 1.6;
-}
-
-.explore-btn {
-  margin-top: 32px;
-  padding: 14px 28px;
-  background-color: #f7f0e7;
-  color: #07100e;
-  font-weight: bold;
-  border: none;
-  border-radius: 100px;
-  backdrop-filter: blur(12px);
-  cursor: pointer;
-  opacity: 0;
-  filter: blur(10px);
-  animation: fadeInText 1s forwards;
-  animation-delay: 2.4s;
-  transition: background-color 0.3s ease;
-}
-
-.explore-btn:hover {
-  background-color: #d7cfc0;
-}
-
-/* Анимация появления */
-@keyframes fadeInText {
+@keyframes fadeInLetter {
   to {
     opacity: 1;
     filter: blur(0);
   }
 }
 
-/* Вторая секция */
-.section {
-  min-height: 100vh;
-  background-color: #f7f0e7;
-  padding: 100px 40px;
-  color: #07100e;
-  transition: opacity 0.6s ease;
-}
-
-.section h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-.section p {
-  font-size: 18px;
-  max-width: 800px;
+#description {
+  font-size: 16px;
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 0.8s ease, filter 0.8s ease;
   line-height: 1.6;
 }
 
-/* Плавное исчезновение */
-.hide-header {
+.show-description {
+  opacity: 1 !important;
+  filter: blur(0) !important;
+}
+
+.explore-btn {
+  margin-top: 30px;
+  padding: 12px 28px;
+  font-size: 14px;
+  background: #f7f0e7;
+  color: #0e0e0e;
+  border: none;
+  border-radius: 28px; /* было 12px */
+  backdrop-filter: blur(12px);
+  cursor: pointer;
   opacity: 0;
+  filter: blur(6px);
+  transition: opacity 0.6s ease, filter 0.6s ease;
+}
+
+.show-button {
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* Вторая секция */
+.section-2 {
+  height: 100vh;
+  background-color: #f7f0e7;
+  color: #0e0e0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+}
+
+.section-2-content {
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Блоб-контейнер */
+.blobs {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
   pointer-events: none;
 }
 
-/* Пузыри */
+/* Пузырьки */
 .blob {
   position: absolute;
-  width: 250px;
-  height: 250px;
-  background: #019348;
-  opacity: 0.3;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
+  background: radial-gradient(circle at center, #0a5029 0%, transparent 70%);
+  opacity: 0.5;
+  filter: blur(30px);
+  animation:
+    float var(--float-duration, 9s) ease-in-out infinite alternate,
+    pulse var(--pulse-delay, 6s) ease-in-out infinite;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  mix-blend-mode: screen;
+}
+
+.blob:hover {
+  transform: scale(1.6);
   filter: blur(80px);
-  animation: blobMove 8s ease-in-out infinite, blobFlash 10s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 0;
 }
 
-/* Анимация движения */
-@keyframes blobMove {
-  0%, 100% {
-    transform: translate(0px, 0px);
-  }
-  50% {
-    transform: translate(
-      calc(-60px + 120px * var(--random-x, 0.5)),
-      calc(-60px + 120px * var(--random-y, 0.5))
-    );
-  }
+/* Позиции пузырей */
+.blob:nth-child(1) {
+  top: 8%;
+  left: 5%;
+  --float-duration: 10s;
+  --pulse-delay: 3s;
+}
+.blob:nth-child(2) {
+  top: 55%;
+  left: 15%;
+  --float-duration: 11s;
+  --pulse-delay: 7s;
+}
+.blob:nth-child(3) {
+  top: 20%;
+  left: 40%;
+  --float-duration: 8s;
+  --pulse-delay: 4s;
+}
+.blob:nth-child(4) {
+  bottom: 10%;
+  right: 10%;
+  --float-duration: 10s;
+  --pulse-delay: 5s;
+}
+.blob:nth-child(5) {
+  bottom: 40%;
+  left: 60%;
+  --float-duration: 7s;
+  --pulse-delay: 6s;
+}
+.blob:nth-child(6) {
+  top: 50%;
+  left: 80%;
+  --float-duration: 6s;
+  --pulse-delay: 8s;
+}
+.blob:nth-child(7) {
+  top: 25%;
+  right: 5%;
+  --float-duration: 10s;
+  --pulse-delay: 9s;
 }
 
-/* Анимация вспышки */
-@keyframes blobFlash {
-  0%, 100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.6;
-  }
+/* Анимации движения и пульсации */
+@keyframes float {
+  0%   { transform: translate(0, 0) scale(1); }
+  20%  { transform: translate(40px, -25px) scale(1.05); }
+  50%  { transform: translate(-30px, 30px) scale(1.1); }
+  70%  { transform: translate(25px, 10px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
-/* Инициализация стилей для каждого пузыря */
-.blob-1  { top: 5%;  left: 56%; animation-delay: 8.03s; animation-duration: 8.23s; }
-.blob-2  { top: 21%; left: 78%; animation-delay: 9.75s; animation-duration: 7.45s; }
-.blob-3  { top: 76%; left: 78%; animation-delay: 1.72s; animation-duration: 8.2s; }
-.blob-4  { top: 34%; left: 76%; animation-delay: 6.23s; animation-duration: 6.37s; }
-.blob-5  { top: 65%; left: 88%; animation-delay: 1.71s; animation-duration: 8.41s; }
-.blob-6  { top: 8%;  left: 45%; animation-delay: 0.47s; animation-duration: 9.3s; }
-.blob-7  { top: 67%; left: 28%; animation-delay: 5.33s; animation-duration: 9.72s; }
-.blob-8  { top: 67%; left: 39%; animation-delay: 3.51s; animation-duration: 7.4s; }
-.blob-9  { top: 17%; left: 25%; animation-delay: 5.07s; animation-duration: 6.37s; }
-.blob-10 { top: 59%; left: 9%;  animation-delay: 0.34s; animation-duration: 9.71s; }
-.blob-11 { top: 64%; left: 74%; animation-delay: 4.17s; animation-duration: 7.36s; }
-.blob-12 { top: 26%; left: 69%; animation-delay: 1.08s; animation-duration: 6.73s; }
+@keyframes pulse {
+  0%, 95%   { filter: brightness(1) blur(30px); }
+  97%       { filter: brightness(2.4) blur(20px); }
+  100%      { filter: brightness(1) blur(30px); }
+}
+ 
