@@ -1,3 +1,4 @@
+/* Обнуление и базовые стили */
 * {
   margin: 0;
   padding: 0;
@@ -5,192 +6,191 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: #07100e;
-  color: #f7f0e7;
+  color: #fcffeb;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-/* Навигация */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
   background: transparent;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
 }
 
 .logo img {
-  height: 48px;
+  height: 42px;
+  transition: transform 0.3s ease;
 }
 
-.nav-links a {
-  margin-left: 30px;
-  text-decoration: none;
-  color: #f7f0e7;
-  font-weight: 500;
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.nav li {
+  font-size: 16px;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
-/* Главная секция */
+.nav li:hover {
+  color: #a6ffb1;
+}
+
+.language-toggle {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Hero секция */
 .hero {
-  position: relative;
   height: 100vh;
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
   overflow: hidden;
 }
 
-.hero-content {
-  z-index: 2;
-  max-width: 800px;
-}
-
 .hero h1 {
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 800;
-  color: #f7f0e7;
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.letter {
   opacity: 0;
-  filter: blur(6px);
-  animation: fade 0.5s forwards;
-  animation-delay: calc(var(--i) * 0.05s);
+  filter: blur(8px);
+  animation: fadeInText 1s forwards;
+  animation-delay: 0.2s;
 }
 
-@keyframes fade {
+.hero p {
+  font-size: 20px;
+  max-width: 720px;
+  opacity: 0;
+  filter: blur(10px);
+  animation: fadeInText 1s forwards;
+  animation-delay: 1.4s;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+.explore-btn {
+  margin-top: 32px;
+  padding: 14px 28px;
+  background-color: #f7f0e7;
+  color: #07100e;
+  font-weight: bold;
+  border: none;
+  border-radius: 100px;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  opacity: 0;
+  filter: blur(10px);
+  animation: fadeInText 1s forwards;
+  animation-delay: 2.4s;
+  transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: #d7cfc0;
+}
+
+/* Анимация появления */
+@keyframes fadeInText {
   to {
     opacity: 1;
     filter: blur(0);
   }
 }
 
-#description {
-  font-size: 18px;
-  line-height: 1.6;
-  opacity: 0;
-  filter: blur(8px);
-  transition: opacity 1s ease, filter 1s ease;
-  white-space: pre-line;
-}
-
-#description.show-description {
-  opacity: 1;
-  filter: blur(0);
-}
-
-.explore-btn {
-  margin-top: 30px;
-  padding: 12px 28px;
-  font-size: 16px;
-  background-color: #f7f0e7;
-  color: #07100e;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  opacity: 0;
-  filter: blur(8px);
-  transition: opacity 0.6s ease, filter 0.6s ease;
-}
-
-.explore-btn.show-button {
-  opacity: 1;
-  filter: blur(0);
-}
-
 /* Вторая секция */
-.section-2 {
+.section {
+  min-height: 100vh;
   background-color: #f7f0e7;
+  padding: 100px 40px;
   color: #07100e;
-  padding: 120px 20px;
-  text-align: center;
+  transition: opacity 0.6s ease;
 }
 
-.section-2 h2 {
+.section h2 {
   font-size: 32px;
   margin-bottom: 20px;
 }
 
-.section-2 p {
+.section p {
   font-size: 18px;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+/* Плавное исчезновение */
+.hide-header {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Пузыри */
-.blobs {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: opacity 2s ease;
-}
-
-.blobs.blobs-loaded {
-  opacity: 1;
-}
-
 .blob {
   position: absolute;
-  width: 220px;
-  height: 220px;
-  background: #0a5029;
+  width: 250px;
+  height: 250px;
+  background: #019348;
+  opacity: 0.3;
   border-radius: 50%;
-  filter: blur(60px);
-  animation: float 14s infinite ease-in-out, pulse 9s infinite ease-in-out;
-  opacity: 0.55;
+  filter: blur(80px);
+  animation: blobMove 8s ease-in-out infinite, blobFlash 10s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.blob:nth-child(1) { top: 10%; left: 5%; }
-.blob:nth-child(2) { top: 30%; left: 20%; }
-.blob:nth-child(3) { top: 50%; left: 10%; }
-.blob:nth-child(4) { top: 70%; left: 25%; }
-.blob:nth-child(5) { top: 15%; left: 50%; }
-.blob:nth-child(6) { top: 40%; left: 60%; }
-.blob:nth-child(7) { top: 60%; left: 75%; }
-.blob:nth-child(8) { top: 20%; left: 85%; }
-.blob:nth-child(9) { top: 80%; left: 60%; }
-.blob:nth-child(10) { top: 85%; left: 40%; }
-.blob:nth-child(11) { top: 10%; left: 35%; }
-.blob:nth-child(12) { top: 50%; left: 90%; }
-
-@keyframes float {
+/* Анимация движения */
+@keyframes blobMove {
   0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  20% {
-    transform: translate(-25px, 15px) scale(1.05);
+    transform: translate(0px, 0px);
   }
   50% {
-    transform: translate(30px, -40px) scale(1.15);
-  }
-  80% {
-    transform: translate(-15px, 25px) scale(1.05);
+    transform: translate(
+      calc(-60px + 120px * var(--random-x, 0.5)),
+      calc(-60px + 120px * var(--random-y, 0.5))
+    );
   }
 }
 
-@keyframes pulse {
+/* Анимация вспышки */
+@keyframes blobFlash {
   0%, 100% {
-    opacity: 0.55;
-    filter: blur(60px);
+    opacity: 0.3;
   }
   50% {
-    opacity: 1;
-    filter: blur(30px);
+    opacity: 0.6;
   }
 }
+
+/* Инициализация стилей для каждого пузыря */
+.blob-1  { top: 5%;  left: 56%; animation-delay: 8.03s; animation-duration: 8.23s; }
+.blob-2  { top: 21%; left: 78%; animation-delay: 9.75s; animation-duration: 7.45s; }
+.blob-3  { top: 76%; left: 78%; animation-delay: 1.72s; animation-duration: 8.2s; }
+.blob-4  { top: 34%; left: 76%; animation-delay: 6.23s; animation-duration: 6.37s; }
+.blob-5  { top: 65%; left: 88%; animation-delay: 1.71s; animation-duration: 8.41s; }
+.blob-6  { top: 8%;  left: 45%; animation-delay: 0.47s; animation-duration: 9.3s; }
+.blob-7  { top: 67%; left: 28%; animation-delay: 5.33s; animation-duration: 9.72s; }
+.blob-8  { top: 67%; left: 39%; animation-delay: 3.51s; animation-duration: 7.4s; }
+.blob-9  { top: 17%; left: 25%; animation-delay: 5.07s; animation-duration: 6.37s; }
+.blob-10 { top: 59%; left: 9%;  animation-delay: 0.34s; animation-duration: 9.71s; }
+.blob-11 { top: 64%; left: 74%; animation-delay: 4.17s; animation-duration: 7.36s; }
+.blob-12 { top: 26%; left: 69%; animation-delay: 1.08s; animation-duration: 6.73s; }

@@ -1,91 +1,97 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Добавляем класс для появления пузырей
-  document.getElementById("blobs").classList.add("blobs-loaded");
+const langToggle = document.getElementById('lang-toggle');
+const title = document.getElementById('title');
+const description = document.getElementById('description');
+const button = document.getElementById('explore-button');
+const navLinks = document.querySelectorAll('.nav li');
+const header = document.querySelector('header');
+const secondSection = document.getElementById('about');
 
-  animateTitle();
-});
+let currentLang = 'en';
 
-function animateTitle() {
-  const title = document.getElementById("title");
-  const letters = title.querySelectorAll(".letter");
-  const description = document.getElementById("description");
-  const button = document.getElementById("exploreBtn");
-
-  letters.forEach((letter, i) => {
-    letter.style.setProperty("--i", i);
-    letter.classList.remove("fade");
-    letter.classList.add("letter");
-  });
-
-  // Удаляем эффекты перед повторной анимацией
-  description.classList.remove("show-description");
-  button.classList.remove("show-button");
-
-  // Показываем описание и кнопку после титульника
-  setTimeout(() => {
-    description.classList.add("show-description");
-  }, letters.length * 50 + 300);
-
-  setTimeout(() => {
-    button.classList.add("show-button");
-  }, letters.length * 50 + 800);
-}
-
-// Переключение языка
-let currentLang = "en";
-
-const translations = {
+const texts = {
   en: {
-    title: "Pixels. Design. Crypto.",
-    description: [
-      "Interface design, NFT-ready visuals, and pixel craftsmanship —",
-      "crypto concepts in a dark, minimal layout inspired by digital culture."
-    ],
-    nav: ["Home", "About", "Work", "Contact", "EN"],
-    button: "Explore More"
+    title: 'Pixels. Design. Crypto.',
+    description: 'Interface design, NFT-ready visuals, and pixel craftsmanship — \ncrypto concepts in a dark, minimal layout inspired by digital culture.',
+    button: 'Explore More',
+    nav: ['Home', 'About', 'Work', 'Contact', 'EN']
   },
   ru: {
-    title: "Пиксели. Дизайн. Крипта.",
-    description: [
-      "Интерфейсы, пиксель-арт и NFT-графика —",
-      "крипто-идеи в тёмном минималистичном оформлении, вдохновлённом цифровой культурой."
-    ],
-    nav: ["Главная", "Обо мне", "Работы", "Контакты", "RU"],
-    button: "Смотреть больше"
+    title: 'Пиксели. Дизайн. Крипта.',
+    description: 'Интерфейсы, NFT-образы и пиксельная графика —\nкриптоконцепции в минималистичном тёмном стиле, вдохновлённом цифровой эстетикой.',
+    button: 'Подробнее',
+    nav: ['Главная', 'Обо мне', 'Работы', 'Контакты', 'RU']
   }
 };
 
-document.getElementById("langBtn").addEventListener("click", () => {
-  currentLang = currentLang === "en" ? "ru" : "en";
+function setLanguage(lang) {
+  currentLang = lang;
+  title.innerHTML = '';
+  description.style.opacity = 0;
+  description.style.filter = 'blur(10px)';
+  button.style.opacity = 0;
+  button.style.filter = 'blur(10px)';
 
-  const { title, description, nav, button } = translations[currentLang];
-
-  // Обновляем заголовок
-  const titleContainer = document.getElementById("title");
-  titleContainer.innerHTML = "";
-
-  [...title].forEach((char, i) => {
-    const span = document.createElement("span");
-    span.className = "letter";
-    span.style.setProperty("--i", i);
+  // Анимация заголовка по буквам
+  const chars = texts[lang].title.split('');
+  chars.forEach((char, i) => {
+    const span = document.createElement('span');
+    span.className = 'letter';
     span.textContent = char;
-    titleContainer.appendChild(span);
+    span.style.animationDelay = `${i * 0.05}s`;
+    title.appendChild(span);
   });
 
-  // Обновляем описание
-  const descriptionElement = document.getElementById("description");
-  descriptionElement.innerHTML = description.join("<br>");
+  // Анимация описания и кнопки
+  setTimeout(() => {
+    description.innerText = texts[lang].description;
+    description.style.opacity = 1;
+    description.style.filter = 'blur(0)';
+  }, chars.length * 50 + 500);
 
-  // Обновляем кнопку
-  const exploreBtn = document.getElementById("exploreBtn");
-  exploreBtn.textContent = button;
+  setTimeout(() => {
+    button.innerText = texts[lang].button;
+    button.style.opacity = 1;
+    button.style.filter = 'blur(0)';
+  }, chars.length * 50 + 1000);
 
-  // Обновляем навигацию
-  const navLinks = document.querySelectorAll(".nav-links a");
-  navLinks.forEach((link, index) => {
-    if (index < nav.length) link.textContent = nav[index];
+  // Обновление навигации
+  navLinks.forEach((li, i) => {
+    if (texts[lang].nav[i]) li.textContent = texts[lang].nav[i];
   });
+}
 
-  // Повторяем анимации
-  animateTitle();
+// Переключение языка
+langToggle.addEventListener('click', () => {
+  const nextLang = currentLang === 'en' ? 'ru' : 'en';
+  setLanguage(nextLang);
+});
+
+// Скролл при нажатии на Explore More
+document.getElementById('explore-button').addEventListener('click', () => {
+  secondSection.scrollIntoView({ behavior: 'smooth' });
+});
+
+// Скролл при нажатии на About
+navLinks.forEach((link) => {
+  if (link.textContent === 'About' || link.textContent === 'Обо мне') {
+    link.addEventListener('click', () => {
+      secondSection.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+});
+
+// Появление и скрытие header при прокрутке
+let lastScrollTop = 0;
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  if (scrollY > window.innerHeight * 0.6) {
+    header.classList.add('hide-header');
+  } else {
+    header.classList.remove('hide-header');
+  }
+});
+
+// При загрузке
+window.addEventListener('DOMContentLoaded', () => {
+  setLanguage(currentLang);
 });
