@@ -152,14 +152,16 @@ body {
 
 .blob {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
-  background: radial-gradient(circle at center, #64ffda 0%, transparent 70%);
-  opacity: 0.15;
-  filter: blur(60px);
-  animation: float 20s ease-in-out infinite, flash 2s ease-in-out;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  background: radial-gradient(circle at center, #76ffe0 0%, transparent 70%);
+  opacity: 0.2;
+  filter: blur(50px);
+  animation:
+    float var(--float-duration, 14s) ease-in-out infinite alternate,
+    pulse var(--pulse-delay, 10s) ease-in-out infinite;
+  transition: transform 0.3s ease, filter 0.3s ease;
   mix-blend-mode: screen;
 }
 
@@ -171,30 +173,44 @@ body {
 .blob:nth-child(1) {
   top: 10%;
   left: 15%;
-  animation-delay: 0s;
+  --float-duration: 12s;
+  --pulse-delay: 3s;
 }
 .blob:nth-child(2) {
   top: 60%;
   left: 20%;
-  animation-delay: 3s;
+  --float-duration: 15s;
+  --pulse-delay: 9s;
 }
 .blob:nth-child(3) {
   top: 30%;
   right: 20%;
-  animation-delay: 6s;
+  --float-duration: 11s;
+  --pulse-delay: 5s;
 }
 .blob:nth-child(4) {
   bottom: 10%;
   right: 10%;
-  animation-delay: 9s;
+  --float-duration: 13s;
+  --pulse-delay: 7s;
+}
+.blob:nth-child(5) {
+  bottom: 40%;
+  left: 50%;
+  --float-duration: 10s;
+  --pulse-delay: 11s;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-40px) scale(1.1); }
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(20px, -30px) scale(1.1); }
+  50%  { transform: translate(-15px, 10px) scale(0.95); }
+  75%  { transform: translate(25px, 25px) scale(1.05); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
-@keyframes flash {
-  0% { filter: brightness(2) blur(60px); opacity: 0.3; }
-  100% { filter: brightness(1) blur(60px); opacity: 0.15; }
+@keyframes pulse {
+  0%, 95%   { filter: brightness(1) blur(50px); }
+  97%       { filter: brightness(2) blur(40px); }
+  100%      { filter: brightness(1) blur(50px); }
 }
