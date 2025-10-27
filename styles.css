@@ -12,6 +12,7 @@
 
 *{ box-sizing: border-box; }
 html,body{ height: 100%; }
+html{ scroll-behavior:smooth; }
 body{
   margin:0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -43,7 +44,7 @@ body{
   color: var(--text);
   text-decoration:none;
   font-weight:700;
-  text-transform: capitalize; /* Первые буквы заглавные */
+  text-transform: capitalize;
   font-size:14px;
 }
 .nav-links .pill{
@@ -55,7 +56,7 @@ body{
   text-transform: capitalize;
 }
 
-/* language switcher — слайдер */
+/* language switcher — slider */
 .lang-switch{
   position: relative;
   display:flex; gap:0;
@@ -141,7 +142,7 @@ body{
 .neon-1{ left:-40px; top:-30px; }
 .neon-2{ right:-30px; bottom:-40px; transform: rotate(-10deg); }
 
-/* WORKS — двухрядная карусель */
+/* WORKS — two-row marquee */
 .works{ padding: 6px 0 40px; }
 .giant-pixel{
   font-family: "Press Start 2P", "Pixelify Sans", monospace;
@@ -150,14 +151,10 @@ body{
 }
 .marquee-wrap{
   position: relative; overflow: hidden;
-  /* мягкое «высветление» краёв */
   -webkit-mask-image: linear-gradient(to right, transparent 0, #fff 8%, #fff 92%, transparent 100%);
           mask-image: linear-gradient(to right, transparent 0, #fff 8%, #fff 92%, transparent 100%);
 }
-.marquee{
-  --speed: 36s;
-  display:block; white-space: nowrap; overflow: hidden;
-}
+.marquee{ --speed: 36s; display:block; white-space: nowrap; overflow: hidden; }
 .marquee + .marquee{ margin-top: 10px; }
 .marquee .track{
   display:inline-flex; gap: 14px; align-items:center;
@@ -168,15 +165,8 @@ body{
   height: 120px; width: 120px; object-fit: contain; background:#fff;
   border-radius: 16px; box-shadow: var(--shadow); padding:16px;
 }
-
-@keyframes scroll-left{
-  from{ transform: translateX(0); }
-  to{ transform: translateX(-50%); }
-}
-@keyframes scroll-right{
-  from{ transform: translateX(-50%); }
-  to{ transform: translateX(0); }
-}
+@keyframes scroll-left{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
+@keyframes scroll-right{ from{ transform: translateX(-50%); } to{ transform: translateX(0); } }
 
 /* STATS */
 .stats{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 28px 0 10px; }

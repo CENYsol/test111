@@ -1,4 +1,4 @@
-/* ===== Stats counter ===== */
+/* ===== Stats counter (adds "+") ===== */
 const counters = document.querySelectorAll(".stat__value");
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
@@ -20,7 +20,7 @@ const io = new IntersectionObserver((entries)=>{
 }, { threshold: 0.35 });
 counters.forEach(c=> io.observe(c));
 
-/* ===== i18n словарь (обновлённые тексты + капитализация) ===== */
+/* ===== i18n (restored counters labels) ===== */
 const dict = {
   en: {
     /* nav */
@@ -40,6 +40,10 @@ const dict = {
       "I Believe Visual Style Is The First Thing That Speaks To The World About You. Every Artwork Is Not Just A Picture — It’s A Carefully Crafted Story In Every Pixel.",
     /* works */
     "works.title": "Works",
+    /* stats labels */
+    "stats.years": "Years Of Experience",
+    "stats.projects": "Original Works",
+    "stats.countries": "Successful NFT Projects",
     /* services */
     "services.eyebrow": "Services",
     "services.card1.title": "Visual Branding",
@@ -73,6 +77,10 @@ const dict = {
       "Я верю, что визуальный стиль — это первое, что говорит миру о вас. Поэтому каждый арт — это не просто картинка, а детально продуманная история в каждом пикселе.",
     /* works */
     "works.title": "Работы",
+    /* stats labels */
+    "stats.years": "Лет опыта",
+    "stats.projects": "Оригинальных работ",
+    "stats.countries": "Успешных проектов для NFT",
     /* services */
     "services.eyebrow": "Услуги",
     "services.card1.title": "Визуальный брендинг",
@@ -112,7 +120,7 @@ function applyLang(lang) {
 /* init default language: EN unless saved */
 applyLang(localStorage.getItem("lang") || "en");
 
-/* switcher click — плавный бегунок реализован в CSS, тут меняем атрибут */
+/* switcher click */
 document.querySelectorAll(".lang-btn").forEach(btn=>{
   btn.addEventListener("click", ()=>{
     applyLang(btn.dataset.lang);
