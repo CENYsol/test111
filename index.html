@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>C/NY — Pixel Studio</title>
+
+  <!-- Fonts: pixel + body (Pixelify Sans на случай кириллицы) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
   <link rel="icon" href="https://i.postimg.cc/FK6TY3fB/logo.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-nav">
-    <!-- ЛОГО -->
     <a class="brand" href="#">
       <img
         src="https://i.postimg.cc/FK6TY3fB/logo.png"
@@ -26,10 +28,16 @@
     </a>
 
     <nav class="nav-links">
-      <a href="#about">who we are</a>
-      <a href="#services">services</a>
-      <a href="#work">work</a>
-      <a href="#contact" class="pill">let’s start!</a>
+      <a href="#about" data-i18n="nav.about">who we are</a>
+      <a href="#services" data-i18n="nav.services">services</a>
+      <a href="#work" data-i18n="nav.work">work</a>
+      <a href="#contact" class="pill" data-i18n="nav.cta">let’s start!</a>
+
+      <!-- Language switcher -->
+      <div class="lang-switch" role="group" aria-label="Language switch">
+        <button class="lang-btn is-active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+      </div>
     </nav>
   </header>
 
@@ -37,7 +45,7 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero__decor hero__decor--cloud cloud-1" aria-hidden="true">
-        <svg viewBox="0 0 120 60" class="cloud">
+        <svg viewBox="0 0 120 60" class="cloud" aria-hidden="true">
           <rect x="6" y="24" width="108" height="24" rx="2" ry="2" />
           <rect x="20" y="12" width="72" height="24" rx="2" ry="2" />
           <rect x="36" y="6" width="36" height="18" rx="2" ry="2" />
@@ -45,7 +53,7 @@
       </div>
 
       <div class="hero__decor hero__decor--cloud cloud-2" aria-hidden="true">
-        <svg viewBox="0 0 120 60" class="cloud">
+        <svg viewBox="0 0 120 60" class="cloud" aria-hidden="true">
           <rect x="6" y="24" width="108" height="24" rx="2" ry="2" />
           <rect x="20" y="12" width="72" height="24" rx="2" ry="2" />
           <rect x="36" y="6" width="36" height="18" rx="2" ry="2" />
@@ -53,21 +61,21 @@
       </div>
 
       <div class="hero__content container">
-        <p class="eyebrow">DIGITAL MARKETING &amp; CREATIVE SOLUTIONS</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">DIGITAL MARKETING &amp; CREATIVE SOLUTIONS</p>
 
         <h1 class="pixel-title">
-          <span>MARKETING</span>
-          <span class="thin">IS OUR ART</span>
+          <span data-i18n="hero.h1.top">MARKETING</span>
+          <span class="thin" data-i18n="hero.h1.bottom">IS OUR ART</span>
         </h1>
 
-        <p class="subtitle">SUCCESS IS YOUR REALITY</p>
+        <p class="subtitle" data-i18n="hero.subtitle">SUCCESS IS YOUR REALITY</p>
 
         <div class="hero__cta">
-          <a href="#contact" class="btn btn--glass">let’s start!</a>
+          <a href="#contact" class="btn btn--glass" data-i18n="hero.cta">let’s start!</a>
         </div>
 
         <figure class="dino" aria-label="Pixel dino on a skateboard">
-          <svg viewBox="0 0 220 170" role="img">
+          <svg viewBox="0 0 220 170" role="img" aria-hidden="true">
             <g class="dino-body">
               <rect x="60" y="30" width="100" height="80" />
               <rect x="140" y="25" width="30" height="60" />
@@ -89,7 +97,7 @@
     <!-- INTRO -->
     <section class="intro container">
       <div class="intro__col">
-        <p>
+        <p data-i18n="intro.left">
           Would you like to increase your brand awareness, attract new customers or improve
           conversions? Thanks to our creative approach, your website will turn into a real
           dinosaur in the online space: it will attract eyes, capture hearts and be remembered
@@ -97,7 +105,7 @@
         </p>
       </div>
       <div class="intro__col">
-        <p>
+        <p data-i18n="intro.right">
           We understand that first impressions are everything, and we ensure that your website
           not only meets your needs, but also makes a lasting impression on your target audience.
         </p>
@@ -110,33 +118,33 @@
     <section class="stats container">
       <article class="stat">
         <div class="stat__value" data-target="20">0</div>
-        <div class="stat__label">years of experience</div>
+        <div class="stat__label" data-i18n="stats.years">years of experience</div>
       </article>
       <article class="stat">
         <div class="stat__value" data-target="8500">0</div>
-        <div class="stat__label">completed projects</div>
+        <div class="stat__label" data-i18n="stats.projects">completed projects</div>
       </article>
       <article class="stat">
         <div class="stat__value" data-target="12">0</div>
-        <div class="stat__label">countries for cooperation</div>
+        <div class="stat__label" data-i18n="stats.countries">countries for cooperation</div>
       </article>
     </section>
 
     <!-- WHO WE ARE -->
     <section id="about" class="about">
       <div class="container">
-        <h2 class="giant-pixel">WHO WE ARE?</h2>
+        <h2 class="giant-pixel" data-i18n="about.title">WHO WE ARE?</h2>
       </div>
     </section>
 
     <!-- SERVICES -->
     <section id="services" class="services container">
-      <p class="services__eyebrow">services<br/>for</p>
+      <p class="services__eyebrow" data-i18n="services.eyebrow">services<br/>for</p>
 
       <div class="cards">
         <article class="card">
           <div class="card__icon">
-            <svg viewBox="0 0 64 64" class="px-icon">
+            <svg viewBox="0 0 64 64" class="px-icon" aria-hidden="true">
               <rect x="12" y="18" width="40" height="28" />
               <rect x="8" y="26" width="8" height="8" />
               <rect x="48" y="26" width="8" height="8" />
@@ -145,37 +153,37 @@
               <rect x="24" y="40" width="16" height="6" />
             </svg>
           </div>
-          <h3>small, medium and large corporations</h3>
-          <p>We develop understandable, market-ready brand systems & promo websites.</p>
+          <h3 data-i18n="services.card1.title">small, medium and large corporations</h3>
+          <p data-i18n="services.card1.text">We develop understandable, market-ready brand systems & promo websites.</p>
         </article>
 
         <article class="card">
           <div class="card__icon">
-            <svg viewBox="0 0 64 64" class="px-icon">
+            <svg viewBox="0 0 64 64" class="px-icon" aria-hidden="true">
               <rect x="8" y="28" width="48" height="8" />
               <rect x="16" y="20" width="32" height="24" />
               <rect x="28" y="26" width="8" height="8" />
             </svg>
           </div>
-          <h3>e-commerce platforms</h3>
-          <p>UX/UI optimized for conversion, catalogs, PDPs and promo campaigns.</p>
+          <h3 data-i18n="services.card2.title">e-commerce platforms</h3>
+          <p data-i18n="services.card2.text">UX/UI optimized for conversion, catalogs, PDPs and promo campaigns.</p>
         </article>
 
         <article class="card">
           <div class="card__icon">
-            <svg viewBox="0 0 64 64" class="px-icon">
+            <svg viewBox="0 0 64 64" class="px-icon" aria-hidden="true">
               <rect x="12" y="36" width="40" height="12" />
               <rect x="18" y="28" width="28" height="8" />
               <rect x="24" y="22" width="16" height="6" />
             </svg>
           </div>
-          <h3>startups</h3>
-          <p>Fast MVP sites, pitch decks visuals, landing pages that ship this week.</p>
+          <h3 data-i18n="services.card3.title">startups</h3>
+          <p data-i18n="services.card3.text">Fast MVP sites, pitch decks visuals, landing pages that ship this week.</p>
         </article>
 
         <article class="card">
           <div class="card__icon">
-            <svg viewBox="0 0 64 64" class="px-icon">
+            <svg viewBox="0 0 64 64" class="px-icon" aria-hidden="true">
               <rect x="10" y="22" width="12" height="12" />
               <rect x="42" y="22" width="12" height="12" />
               <rect x="16" y="34" width="32" height="16" />
@@ -183,8 +191,8 @@
               <rect x="34" y="18" width="8" height="8" />
             </svg>
           </div>
-          <h3>charitable organisations</h3>
-          <p>Clear storytelling + accessible UI with strong donation flows.</p>
+          <h3 data-i18n="services.card4.title">charitable organisations</h3>
+          <p data-i18n="services.card4.text">Clear storytelling + accessible UI with strong donation flows.</p>
         </article>
       </div>
     </section>
@@ -192,8 +200,8 @@
     <!-- CONTACT / CTA -->
     <section id="contact" class="cta">
       <div class="container">
-        <h3 class="pixel-title small">Let’s craft your next big thing</h3>
-        <a href="mailto:hello@cny.studio" class="btn btn--primary">contact us</a>
+        <h3 class="pixel-title small" data-i18n="cta.title">Let’s craft your next big thing</h3>
+        <a href="mailto:hello@cny.studio" class="btn btn--primary" data-i18n="cta.button">contact us</a>
       </div>
     </section>
   </main>
@@ -201,7 +209,7 @@
   <footer class="site-footer">
     <div class="container">
       <span>© C/NY Studio</span>
-      <span>pixel-built with love</span>
+      <span data-i18n="footer.note">pixel-built with love</span>
     </div>
   </footer>
 
