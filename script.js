@@ -131,8 +131,7 @@ function repeatArray(arr, times){
 
 function fillRow(containerId, arr){
   const el = document.getElementById(containerId);
-  // повторяем набор побольше, чтобы трек точно покрывал ширину и скроллился бесшовно
-  const list = repeatArray(arr, 4); // ×4 хватает для 4K
+  const list = repeatArray(arr, 4); // ×4 хватит даже для широких экранов
   const frag = document.createDocumentFragment();
   list.forEach(src=>{
     const img = document.createElement("img");

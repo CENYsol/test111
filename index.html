@@ -5,18 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>C/NY — Pixel Studio</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Favicon (как просил, не меняю) -->
+  <!-- Favicon не меняю -->
   <link rel="icon" href="https://i.postimg.cc/FK6TY3fB/logo.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-nav">
     <a class="brand" href="#">
-      <!-- Логотип меняем только тут -->
+      <!-- Лого меняем только здесь -->
       <img
         src="https://i.postimg.cc/4dBC8Z5c/logo-2.png"
         alt="C/NY"
@@ -60,7 +59,7 @@
           <a href="#work" class="btn btn--glass" data-i18n="hero.cta">Enter the world of pixels</a>
         </div>
 
-        <!-- Hero image -->
+        <!-- Hero image — опущено ниже и с сильной белой маской -->
         <figure class="hero-photo" aria-label="Hero artwork">
           <img
             src="https://i.postimg.cc/vB0x8FPF/mario-nomads.png"
@@ -186,11 +185,38 @@
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA + Socials -->
     <section id="contact" class="cta">
       <div class="container">
         <h3 class="pixel-title small" data-i18n="cta.title">I’ll craft your next big project</h3>
         <a href="#" class="btn btn--primary" data-i18n="cta.button">Order</a>
+
+        <div class="cta-social">
+          <span class="divider" aria-hidden="true"></span>
+          <div class="icons">
+            <a href="#" aria-label="Instagram" class="icon" title="Instagram">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" aria-label="Behance" class="icon" title="Behance">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 7h5a3 3 0 1 1 0 6H3V7Z"></path>
+                <path d="M3 13h5a3 3 0 0 1 0 6H3v-6Z"></path>
+                <path d="M14 12.5a4 4 0 1 1 8 1.5h-8a4 4 0 0 0 8 1.5"></path>
+                <rect x="14" y="6" width="5" height="2"></rect>
+              </svg>
+            </a>
+            <a href="#" aria-label="Telegram" class="icon" title="Telegram">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 2 11 13"></path>
+                <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
