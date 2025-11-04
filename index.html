@@ -5,17 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>C/NY — Pixel Studio</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Favicon не меняю -->
+  <!-- Favicon -->
   <link rel="icon" href="https://i.postimg.cc/FK6TY3fB/logo.png" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Header -->
   <header class="site-nav">
     <a class="brand" href="#">
-      <!-- Лого меняем только здесь -->
+      <!-- Логотип меняем только здесь -->
       <img
         src="https://i.postimg.cc/4dBC8Z5c/logo-2.png"
         alt="C/NY"
@@ -31,7 +34,7 @@
     <nav class="nav-links">
       <a href="#work" data-i18n="nav.works">Works</a>
       <a href="#services" data-i18n="nav.services">Services</a>
-      <a href="#" class="pill" data-i18n="nav.cta">Order!</a>
+      <a href="https://t.me/cnyarts" target="_blank" class="pill" data-i18n="nav.cta">Order!</a>
 
       <!-- Language switcher -->
       <div class="lang-switch" data-active="en" role="group" aria-label="Language switch">
@@ -48,18 +51,21 @@
       <div class="hero__content container">
         <p class="eyebrow" data-i18n="hero.eyebrow">Pixel art &amp; creative design</p>
 
+        <!-- EN слоган в две строки c длинным тире -->
         <h1 class="pixel-title">
-          <span data-i18n="hero.h1.top">Pixels</span>
+          <span data-i18n="hero.h1.top">Pixels —</span><br />
           <span class="thin" data-i18n="hero.h1.bottom">are art</span>
         </h1>
 
         <p class="subtitle" data-i18n="hero.subtitle">Artworks are your visual story</p>
 
         <div class="hero__cta">
-          <a href="#work" class="btn btn--glass" data-i18n="hero.cta">Enter the world of pixels</a>
+          <a href="https://t.me/cnyarts" target="_blank" class="btn btn--glass" data-i18n="hero.cta">
+            Enter the world of pixels
+          </a>
         </div>
 
-        <!-- Hero image — опущено ниже и с сильной белой маской -->
+        <!-- Hero image (ниже, с белой маской снизу) -->
         <figure class="hero-photo" aria-label="Hero artwork">
           <img
             src="https://i.postimg.cc/vB0x8FPF/mario-nomads.png"
@@ -121,10 +127,9 @@
       <p class="services__eyebrow" data-i18n="services.eyebrow">Services</p>
 
       <div class="cards">
-        <!-- Visual Branding -->
+        <!-- Visual Branding (корона) -->
         <article class="card">
           <div class="card__icon">
-            <!-- Pixel Crown -->
             <svg viewBox="0 0 32 20" class="px-icon" aria-hidden="true">
               <rect x="2" y="12" width="4" height="4"></rect>
               <rect x="8" y="6" width="4" height="4"></rect>
@@ -138,10 +143,9 @@
           <p data-i18n="services.card1.text">Pixel art as a brand and a unique product image.</p>
         </article>
 
-        <!-- Product Visuals -->
+        <!-- Product Visuals (глаз) -->
         <article class="card">
           <div class="card__icon">
-            <!-- Pixel Eye -->
             <svg viewBox="0 0 32 20" class="px-icon" aria-hidden="true">
               <rect x="4" y="8" width="4" height="4"></rect>
               <rect x="8" y="6" width="4" height="8"></rect>
@@ -189,7 +193,10 @@
     <section id="contact" class="cta">
       <div class="container">
         <h3 class="pixel-title small" data-i18n="cta.title">I’ll craft your next big project</h3>
-        <a href="#" class="btn btn--primary" data-i18n="cta.button">Order</a>
+
+        <a href="https://t.me/cnyarts" target="_blank" class="btn btn--primary" data-i18n="cta.button">
+          Order
+        </a>
 
         <div class="cta-social">
           <span class="divider" aria-hidden="true"></span>
@@ -201,6 +208,7 @@
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
               </svg>
             </a>
+
             <a href="#" aria-label="Behance" class="icon" title="Behance">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M3 7h5a3 3 0 1 1 0 6H3V7Z"></path>
@@ -209,7 +217,8 @@
                 <rect x="14" y="6" width="5" height="2"></rect>
               </svg>
             </a>
-            <a href="#" aria-label="Telegram" class="icon" title="Telegram">
+
+            <a href="https://t.me/cnyart" target="_blank" aria-label="Telegram" class="icon" title="Telegram">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M22 2 11 13"></path>
                 <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
@@ -221,6 +230,7 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <span>© C/NY Studio</span>
