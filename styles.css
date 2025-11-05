@@ -45,6 +45,15 @@ body{
   font-weight:700;
   text-transform: none;
   font-size:14px;
+  padding:8px 10px;                 /* добавили зону для подсветки */
+  border-radius:10px;
+  transition: transform .15s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.nav-links a:hover{
+  background: var(--accent);
+  color: var(--accent-ink);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 .nav-links .pill{
   padding:10px 14px;
@@ -83,7 +92,7 @@ body{
 /* HERO */
 .hero{
   position:relative; overflow:clip;
-  padding: 96px 0 140px; /* больше нижний отступ */
+  padding: 96px 0 140px;
 }
 .eyebrow{ color: var(--muted); font-size:12px; letter-spacing:.12em; text-transform: none; margin:0 0 8px; }
 
@@ -115,10 +124,7 @@ body{
 .btn:hover{ transform: translateY(-2px); }
 .btn:active{ transform: translateY(0); }
 .btn--glass{
-  background: var(--glass);
-  border:1px solid var(--glass-stroke);
-  backdrop-filter: blur(8px);
-  color:#000;
+  background: var(--glass); border:1px solid var(--glass-stroke); backdrop-filter: blur(8px); color:#000;
 }
 .btn--glass:hover{
   background: var(--accent);
@@ -127,11 +133,11 @@ body{
 }
 .btn--primary{ background: var(--accent); color: var(--accent-ink); }
 
-/* hero image — ещё ниже + сильная маска */
+/* hero image ниже + маска */
 .hero-photo{
   position:absolute;
   right: clamp(0px, 2vw, 40px);
-  bottom: -88px;                /* опущено ниже, не заходит под шапку */
+  bottom: -88px;
   width:min(520px, 47vw);
   pointer-events:none;
   filter: drop-shadow(0 14px 40px rgba(0,0,0,.15));
@@ -159,32 +165,20 @@ body{
 .stat__value{ font-family: "Press Start 2P", "Pixelify Sans", monospace; font-size: clamp(32px, 6vw, 48px); }
 .stat__label{ margin-top:8px; color:var(--muted); font-size:14px; text-transform: none; }
 
-/* WORKS — two-row marquee (без mask-image, гифки живые) */
+/* WORKS */
 .works{ padding: 96px 0 48px; }
 .giant-pixel{
   font-family: "Press Start 2P", "Pixelify Sans", monospace;
   font-size: clamp(40px, 14vw, 120px);
   letter-spacing: 2px; text-align:left; margin: 6px 0 18px;
 }
-.marquee-wrap{
-  position: relative; overflow: hidden;
-}
-/* градиенты по краям через псевдоэлементы */
+.marquee-wrap{ position: relative; overflow: hidden; }
 .marquee-wrap::before,
 .marquee-wrap::after{
-  content:"";
-  position:absolute; top:0; bottom:0; width:7%;
-  pointer-events:none;
-  z-index:2;
+  content:""; position:absolute; top:0; bottom:0; width:7%; pointer-events:none; z-index:2;
 }
-.marquee-wrap::before{
-  left:0;
-  background: linear-gradient(to right, var(--bg), rgba(245,246,247,0));
-}
-.marquee-wrap::after{
-  right:0;
-  background: linear-gradient(to left, var(--bg), rgba(245,246,247,0));
-}
+.marquee-wrap::before{ left:0;  background: linear-gradient(to right, var(--bg), rgba(245,246,247,0)); }
+.marquee-wrap::after { right:0; background: linear-gradient(to left, var(--bg), rgba(245,246,247,0)); }
 
 .marquee{ --speed: 38s; display:block; white-space: nowrap; overflow: hidden; position:relative; z-index:1; }
 .marquee + .marquee{ margin-top: 14px; }
@@ -198,7 +192,6 @@ body{
   height: 148px; width: 148px; object-fit: cover; background:#fff;
   border-radius: 18px; box-shadow: var(--shadow);
 }
-
 @keyframes scroll-left{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
 @keyframes scroll-right{ from{ transform: translateX(-50%); } to{ transform: translateX(0); } }
 

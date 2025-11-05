@@ -107,15 +107,15 @@ document.querySelectorAll(".lang-btn").forEach((b) => {
 const images = [
   "https://i.postimg.cc/RCc04n0L/RIK.gif",
   "https://i.postimg.cc/prVp52Gb/bored-szato.gif",
-  "https://i.postimg.cc/NFnCDLM6/bitboy.gif",           // обновлено
+  "https://i.postimg.cc/NFnCDLM6/bitboy.gif",
   "https://i.postimg.cc/Z5SX8CPc/Oligarch-banner.png",
   "https://i.postimg.cc/HscTZc75/art4.gif",
   "https://i.postimg.cc/qvFyfCmR/cen111y.png",
-  "https://i.postimg.cc/6qPbcTqW/dofamin.gif",          // обновлено
+  "https://i.postimg.cc/6qPbcTqW/dofamin.gif",
   "https://i.postimg.cc/0NHtBQSC/Daniel.png",
   "https://i.postimg.cc/BQDdPxK7/mr-moon.png",
   "https://i.postimg.cc/x1nFkBYk/ceny-stat.png",
-  "https://i.postimg.cc/J7jyWSmK/My-PP.gif",            // заменено PPrimates
+  "https://i.postimg.cc/J7jyWSmK/My-PP.gif",
   "https://i.postimg.cc/wBWPY2Cc/Mario-Nomads2.gif",
 ];
 
@@ -130,7 +130,7 @@ function repeatArray(arr, times) {
 
 function fillRow(containerId, arr) {
   const el = document.getElementById(containerId);
-  const list = repeatArray(arr, 4); // Повторяем, чтобы тянулось на всю ширину
+  const list = repeatArray(arr, 4); // повторяем, чтобы тянулось на всю ширину
   const frag = document.createDocumentFragment();
   list.forEach((src) => {
     const img = document.createElement("img");
